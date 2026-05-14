@@ -73,9 +73,11 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
+  /* Brand-red theme color — tints the Safari/iOS browser chrome
+     (tab bar, address bar, status bar) with Roztomily red. */
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0a0807" },
+    { media: "(prefers-color-scheme: light)", color: "#dc2c25" },
+    { media: "(prefers-color-scheme: dark)", color: "#dc2c25" },
   ],
   colorScheme: "light dark",
   width: "device-width",
