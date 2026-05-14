@@ -52,8 +52,8 @@ export default function Home() {
         href="/services"
         images={[
           "/roztomily/services/creative-production-and-advertising.jpg",
-          "/roztomily/imagery/services/creative/01-film-set-crew.jpg",
           "/roztomily/imagery/services/creative/02-cameraman-silhouette.jpg",
+          "/roztomily/imagery/services/creative/04-concert-crowd-lights.jpg",
           "/roztomily/imagery/services/creative/03-camera-tripod.jpg",
         ]}
         background="page"
@@ -80,7 +80,6 @@ export default function Home() {
         ]}
         images={[
           "/roztomily/services/media-relations-and-buying.png",
-          "/roztomily/imagery/services/media/02-conference-room.jpg",
           "/roztomily/imagery/services/media/01-office-desks.jpg",
           "/roztomily/imagery/services/media/04-typewriter-newspaper.jpg",
         ]}
