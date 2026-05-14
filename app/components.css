@@ -351,7 +351,7 @@
 .logo-marquee__track {
   display: flex;
   width: max-content;
-  gap: 20px;
+  gap: 0;
   align-items: center;
   animation: logo-scroll 90s linear infinite;
   will-change: transform;
@@ -364,9 +364,9 @@
   align-items: center;
   justify-content: center;
   height: 110px;
-  width: 200px;          /* fixed slot — every logo gets the same canvas */
-  flex: 0 0 200px;
-  padding-inline: 10px;
+  width: 170px;          /* fixed slot — every logo gets the same canvas */
+  flex: 0 0 170px;
+  padding-inline: 4px;
 }
 .logo-marquee__item img,
 .logo-marquee__item svg {
@@ -388,7 +388,18 @@
 .logo-marquee__item:hover img,
 .logo-marquee__item:hover svg {
   opacity: 1;
-  filter: grayscale(0) contrast(1);
+  /* Hover — full color comes back, blend mode off so colors render true */
+  filter: grayscale(0) contrast(1.05) saturate(1.15);
+  mix-blend-mode: normal;
+  transform: scale(1.04);
+}
+.logo-marquee__item img,
+.logo-marquee__item svg {
+  transform: scale(1);
+  transition: opacity 240ms var(--motion-easing),
+              filter 320ms var(--motion-easing),
+              mix-blend-mode 0ms,
+              transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 /* Dark mode — invert so dark logos become light, screen blend hides
    dark/white backgrounds against the dark page. */
@@ -401,6 +412,8 @@
 [data-theme="dark"] .logo-marquee__item:hover img,
 [data-theme="dark"] .logo-marquee__item:hover svg {
   opacity: 1;
+  filter: grayscale(0) contrast(1.05) saturate(1.15);
+  mix-blend-mode: normal;
 }
 .logo-marquee__fallback {
   font-family: var(--font-extended);

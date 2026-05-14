@@ -17,15 +17,6 @@ export type Client = {
 };
 
 export const clients: Client[] = [
-  // Reference inline SVG marks — currentColor-aware, kept from the
-  // original design system as anchor brands.
-  { name: "Mark 01", src: "/svg/customer-1.svg" },
-  { name: "Mark 02", src: "/svg/customer-2.svg" },
-  { name: "Mark 03", src: "/svg/customer-3.svg" },
-  { name: "Mark 04", src: "/svg/customer-4.svg" },
-  { name: "Mark 05", src: "/svg/customer-5.svg" },
-  { name: "Mark 06", src: "/svg/customer-6.svg" },
-
   // Roztomily campaign clients — local PNGs
   { name: "Bord Bia",     src: "/roztomily/logos/BoardBia-1-300x300-transparent.png" },
   { name: "Premier Cool", src: "/roztomily/logos/Premier-5-300x300-transparent.png" },
