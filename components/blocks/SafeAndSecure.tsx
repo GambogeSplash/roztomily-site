@@ -17,7 +17,7 @@ export function SafeAndSecure() {
               position: "relative",
               borderRadius: "var(--radius-xl)",
               overflow: "hidden",
-              backgroundImage: "url(/roztomily/imagery/services/creative/04-concert-crowd-lights.jpg)",
+              backgroundImage: "url(/roztomily/services/talent-management.jpg)",
               backgroundSize: "cover",
               backgroundPosition: "center",
               minHeight: 520,
