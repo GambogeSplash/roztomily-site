@@ -1,0 +1,1067 @@
+/* Shared block-level layout classes. Mobile-first responsiveness lives here
+   so block components stay declarative. */
+
+/* ── Hero video layer — cycles in over the static photo ──────────── */
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 55%;
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+  /* 16s cycle: 5s photo · 2s fade-in · 5s video · 2s fade-out · 2s photo */
+  animation: hero-video-cycle 16s ease-in-out infinite;
+}
+@keyframes hero-video-cycle {
+  0%, 31%   { opacity: 0; }    /* photo (thumbnail) */
+  44%, 75%  { opacity: 1; }    /* video visible */
+  88%, 100% { opacity: 0; }    /* photo again */
+}
+
+/* Red brand glare — radial wash that pulses with the video moment.
+   Sits above the dark scrim (z-index 3) so the screen blend actually
+   tints the dark layer red instead of getting buried. */
+.hero-red-glare {
+  position: absolute;
+  inset: -10%;        /* extra room for the drift transform */
+  z-index: 3;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 90% 70% at 25% 35%, rgba(255, 80, 65, 0.85) 0%, transparent 55%),
+    radial-gradient(ellipse 80% 60% at 80% 75%, rgba(220, 44, 37, 0.78) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 50% 50%, rgba(255, 50, 40, 0.45) 0%, transparent 70%);
+  mix-blend-mode: screen;
+  opacity: 0;
+  /* Two animations: opacity cycle (visibility) + drift (slow lateral motion) */
+  animation:
+    hero-glare-cycle 16s ease-in-out infinite,
+    hero-glare-drift 11s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+@keyframes hero-glare-drift {
+  0%   { transform: translate(-5%, -3%) scale(1.02); }
+  25%  { transform: translate(4%, -2%) scale(1.08); }
+  50%  { transform: translate(6%, 4%) scale(1.04); }
+  75%  { transform: translate(-3%, 3%) scale(1.06); }
+  100% { transform: translate(-5%, -3%) scale(1.02); }
+}
+@keyframes hero-glare-cycle {
+  0%, 35%   { opacity: 0.28; }  /* subtle on thumbnail */
+  48%, 72%  { opacity: 1; }     /* full while video plays */
+  85%, 100% { opacity: 0.28; }  /* back to subtle on thumbnail */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-video, .hero-red-glare { animation: none; opacity: 0; }
+}
+
+/* ── Painterly hero — shrinks gracefully on small screens ────────── */
+.painterly-hero {
+  padding-top: 220px;
+  padding-bottom: var(--space-32);
+  min-height: 760px;
+}
+@media (max-width: 900px) {
+  .painterly-hero {
+    padding-top: 160px;
+    padding-bottom: var(--space-16);
+    min-height: 560px;
+  }
+}
+@media (max-width: 540px) {
+  .painterly-hero {
+    padding-top: 130px;
+    padding-bottom: var(--space-12);
+    min-height: 480px;
+  }
+}
+
+/* About hero variant — needs a touch more breathing room around body copy */
+.painterly-hero--about {
+  min-height: 740px;
+}
+@media (max-width: 900px) {
+  .painterly-hero--about { min-height: 600px; }
+}
+@media (max-width: 540px) {
+  .painterly-hero--about { min-height: 520px; }
+}
+
+/* Services + projects + project detail hero — tight top padding on mobile.
+   The desktop value of "nav-height + 80/100/140px" is too much breathing room
+   on phones — collapses to nav + 40px. */
+@media (max-width: 768px) {
+  .services-hero {
+    padding-top: calc(var(--nav-height) + 48px) !important;
+    padding-bottom: var(--space-12) !important;
+  }
+}
+
+/* Contact hero variant — already shorter (form lives in same section) */
+.painterly-hero--contact {
+  padding-top: 180px;
+  padding-bottom: var(--space-24);
+  min-height: 0;
+}
+@media (max-width: 900px) {
+  .painterly-hero--contact {
+    padding-top: 140px;
+    padding-bottom: var(--space-16);
+  }
+}
+@media (max-width: 540px) {
+  .painterly-hero--contact { padding-top: 120px; }
+}
+
+/* ── Grid helpers ─────────────────────────────────────────────────── */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-20); align-items: center; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-10); }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-6) var(--space-8); }
+.grid-6 { display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--space-8); align-items: center; justify-items: center; }
+.feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6) var(--space-8); }
+
+@media (max-width: 1024px) {
+  .grid-6 { grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
+}
+
+@media (max-width: 768px) {
+  .grid-2 { grid-template-columns: 1fr; gap: var(--space-10); }
+  .grid-3 { grid-template-columns: 1fr; gap: var(--space-10); }
+  .grid-4 { grid-template-columns: 1fr 1fr; }
+  .grid-6 { grid-template-columns: repeat(2, 1fr); gap: var(--space-6); }
+  .feature-grid { grid-template-columns: 1fr; gap: var(--space-5); }
+  .image-left-on-desktop { order: 0 !important; }
+  .image-right-on-desktop { order: 1 !important; }
+}
+
+/* ── Sections ─────────────────────────────────────────────────────── */
+.section {
+  padding-top: var(--section-pad-y);
+  padding-bottom: var(--section-pad-y);
+}
+.section--page    { background: var(--bg-page); }
+.section--surface { background: var(--bg-surface); }
+.section--muted   { background: var(--bg-surface-muted); }
+.section--inverse { background: var(--bg-inverse); color: var(--text-on-dark); }
+
+/* ── Nav ──────────────────────────────────────────────────────────── */
+.nav-menu { display: flex; gap: var(--space-8); }
+.nav-group { position: relative; }
+.nav-group__label {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  color: var(--text-soft);
+  padding-block: var(--space-2);
+  position: relative;
+}
+.nav-group__label::after {
+  content: "";
+  position: absolute;
+  left: 50%; bottom: 0;
+  width: 0; height: 1px;
+  background: currentColor;
+  transition: width var(--motion-normal) var(--motion-easing), left var(--motion-normal) var(--motion-easing);
+}
+.nav-group:hover .nav-group__label::after,
+.nav-group:focus-within .nav-group__label::after {
+  width: 100%;
+  left: 0;
+}
+
+/* Simple nav link (no dropdown) */
+.nav-link {
+  position: relative;
+  font-size: 14px;
+  letter-spacing: -0.005em;
+  color: inherit;
+  opacity: 0.85;
+  padding-block: var(--space-2);
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: color var(--motion-normal) var(--motion-easing), opacity var(--motion-fast) var(--motion-easing);
+}
+.nav-link:hover { opacity: 1; }
+.nav-link:focus,
+.nav-link:active { outline: none; }
+
+/* Dark mode — force nav text white regardless of scroll state.
+   Inline style sets fixed-ink (dark) by default, which is unreadable on
+   the dark page in dark mode. This override wins by being more specific. */
+[data-theme="dark"] .site-nav,
+[data-theme="dark"] .site-nav a,
+[data-theme="dark"] .site-nav .nav-link { color: var(--text-fixed-white) !important; }
+[data-theme="dark"] .site-nav .nav-link[data-active="true"] { color: var(--bg-teal) !important; }
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 50%; bottom: 0;
+  width: 0; height: 1px;
+  background: currentColor;
+  transition: width var(--motion-normal) var(--motion-easing), left var(--motion-normal) var(--motion-easing);
+}
+.nav-link:hover::after {
+  width: 100%;
+  left: 0;
+}
+/* Active page state — brand-red, slightly heavier, permanent underline */
+.nav-link[data-active="true"] {
+  color: var(--bg-teal);
+  font-weight: 500;
+}
+.nav-link[data-active="true"]::after {
+  width: 100%;
+  left: 0;
+  background: var(--bg-teal);
+}
+.nav-link:focus-visible {
+  outline: 1px dashed var(--text-muted);
+  outline-offset: 6px;
+  border-radius: 2px;
+}
+.nav-group__panel {
+  position: absolute;
+  top: 100%;                    /* sit directly under label — no gap to lose hover */
+  left: 50%;
+  transform: translateX(-50%) translateY(-4px);
+  margin-top: 8px;
+  min-width: 240px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-3);
+  display: grid;
+  gap: 2px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--motion-normal) var(--motion-easing), transform var(--motion-normal) var(--motion-easing);
+  z-index: 60;
+}
+/* Invisible hover-bridge connecting label → panel so the menu doesn't snap shut when crossing the gap. */
+.nav-group__panel::before {
+  content: "";
+  position: absolute;
+  top: -12px; left: 0; right: 0; height: 12px;
+}
+.nav-group:hover .nav-group__panel,
+.nav-group:focus-within .nav-group__panel {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+.nav-group__item {
+  display: block;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  color: var(--text-primary);
+  transition: background var(--motion-fast) var(--motion-easing);
+}
+.nav-group__item:hover { background: var(--bg-surface); opacity: 1; }
+
+.site-nav__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: inherit;
+}
+
+/* Pill inside the nav — slightly smaller than the default Pill style */
+.site-nav [data-pill] {
+  padding-inline: 14px !important;
+  padding-block: 9px !important;
+  font-size: 13px !important;
+  border-radius: 10px !important;
+}
+
+/* ── Hamburger / Close icon — 2 lines that morph to X ─────────────── */
+.burger {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  z-index: 90;
+}
+.burger__line {
+  position: absolute;
+  left: 50%;
+  width: 22px;
+  height: 1.6px;
+  margin-left: -11px;
+  border-radius: 2px;
+  background: currentColor;
+  transition:
+    top 240ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.burger__line--top    { top: 38%; }
+.burger__line--bottom { top: 62%; }
+.burger[data-open="true"] .burger__line--top    { top: 50%; transform: translateY(-50%) rotate(45deg); }
+.burger[data-open="true"] .burger__line--bottom { top: 50%; transform: translateY(-50%) rotate(-45deg); }
+
+/* Show desktop nav + actions on desktop, burger on mobile */
+.site-nav__actions { display: inline-flex; align-items: center; gap: var(--space-3); }
+
+@media (max-width: 900px) {
+  .nav-menu { display: none; }
+  .site-nav__actions { display: none; }
+  .burger { display: inline-flex; }
+}
+
+/* ── Animations ───────────────────────────────────────────────────── */
+@keyframes duna-pulse {
+  0%   { transform: scale(1);   opacity: 0.5; }
+  70%  { transform: scale(2.4); opacity: 0;   }
+  100% { transform: scale(2.4); opacity: 0;   }
+}
+
+/* Inline customer-logo SVGs */
+.grid-6 svg { height: 28px; width: auto; max-width: 100%; }
+
+/* ── Magic cursor: hide native pointer on fine-pointer devices ────── */
+@media (hover: hover) and (pointer: fine) {
+  html, body, * { cursor: none !important; }
+  a, button, [role="button"], input, select, textarea, label { cursor: none !important; }
+}
+@media (prefers-reduced-motion: reduce), (pointer: coarse) {
+  html, body, * { cursor: auto !important; }
+  a, button, [role="button"] { cursor: pointer !important; }
+}
+
+/* ── Logo marquee ─────────────────────────────────────────────────── */
+.logo-marquee {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
+}
+.logo-marquee__track {
+  display: flex;
+  width: max-content;
+  gap: 20px;
+  align-items: center;
+  animation: logo-scroll 90s linear infinite;
+  will-change: transform;
+}
+.logo-marquee:hover .logo-marquee__track {
+  animation-play-state: paused;
+}
+.logo-marquee__item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 110px;
+  width: 200px;          /* fixed slot — every logo gets the same canvas */
+  flex: 0 0 200px;
+  padding-inline: 10px;
+}
+.logo-marquee__item img,
+.logo-marquee__item svg {
+  /* Uniform size — every logo renders to the same height + width
+     ceiling, `object-fit: contain` preserves aspect ratio. */
+  max-height: 72px;
+  max-width: 190px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  /* Grayscale all logos so colors don't fight; multiply blend mode
+     removes most light backgrounds against a light page (works for
+     off-white, fails for pure white — see note in TrustedBy.tsx). */
+  filter: grayscale(1) contrast(1.05);
+  mix-blend-mode: multiply;
+  opacity: 0.62;
+  transition: opacity 240ms var(--motion-easing), filter 240ms var(--motion-easing);
+}
+.logo-marquee__item:hover img,
+.logo-marquee__item:hover svg {
+  opacity: 1;
+  filter: grayscale(0) contrast(1);
+}
+/* Dark mode — invert so dark logos become light, screen blend hides
+   dark/white backgrounds against the dark page. */
+[data-theme="dark"] .logo-marquee__item img,
+[data-theme="dark"] .logo-marquee__item svg {
+  filter: grayscale(1) invert(1) contrast(1.05);
+  mix-blend-mode: screen;
+  opacity: 0.62;
+}
+[data-theme="dark"] .logo-marquee__item:hover img,
+[data-theme="dark"] .logo-marquee__item:hover svg {
+  opacity: 1;
+}
+.logo-marquee__fallback {
+  font-family: var(--font-extended);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 14px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+@keyframes logo-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-marquee__track { animation: none; transform: translateX(0); }
+}
+
+/* ── Image lazy fade-in ───────────────────────────────────────────── */
+img {
+  animation: img-fade-in 600ms var(--motion-easing) both;
+}
+@keyframes img-fade-in {
+  from { opacity: 0; transform: scale(1.02); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  img { animation: none; }
+}
+
+/* ── View Transitions API: soft fade between routes ───────────────── */
+@view-transition {
+  navigation: auto;
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 240ms;
+  animation-timing-function: var(--motion-easing);
+}
+::view-transition-old(root) { animation-name: vt-fade-out; }
+::view-transition-new(root) { animation-name: vt-fade-in; }
+@keyframes vt-fade-out { to   { opacity: 0; } }
+@keyframes vt-fade-in  { from { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
+}
+
+/* ── Hover lift on cards ─────────────────────────────────────────── */
+.lift {
+  transition: transform var(--motion-normal) var(--motion-easing),
+              box-shadow var(--motion-normal) var(--motion-easing);
+}
+.lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card);
+}
+
+/* ── Series A banner — glass pill over hero ───────────────────────── */
+.series-a-banner {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  max-width: 100%;
+  padding: 4px 12px 4px 11px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  color: var(--text-fixed-white);
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  margin-bottom: var(--space-12);
+  overflow: hidden;
+  transition: background var(--motion-normal) var(--motion-easing),
+              border-color var(--motion-normal) var(--motion-easing),
+              transform var(--motion-fast) var(--motion-easing);
+}
+.series-a-banner:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.36);
+  transform: translateY(-1px);
+}
+.series-a-banner__dot {
+  position: relative;
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--bg-teal);
+  flex: 0 0 7px;
+}
+.series-a-banner__pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: var(--bg-teal);
+  opacity: 0.4;
+  animation: duna-pulse 1.8s var(--motion-easing) infinite;
+}
+.series-a-banner__text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.series-a-banner__arrow {
+  opacity: 0.7;
+  transition: transform 200ms var(--motion-easing), opacity 200ms var(--motion-easing);
+}
+.series-a-banner:hover .series-a-banner__arrow {
+  transform: translateX(3px);
+  opacity: 1;
+}
+
+/* Shimmer pass — soft highlight sweep across the glass */
+.series-a-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 0, transparent 38%, rgba(255,255,255,0.28) 50%, transparent 62%, transparent 100%);
+  transform: translateX(-100%);
+  animation: shimmer-sweep 4.4s var(--motion-easing) 2s infinite;
+  pointer-events: none;
+}
+@keyframes shimmer-sweep {
+  0%   { transform: translateX(-100%); }
+  60%  { transform: translateX(140%); }
+  100% { transform: translateX(140%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .series-a-banner::after { animation: none; opacity: 0; }
+}
+
+/* Mobile: tighter pill, smaller text */
+@media (max-width: 540px) {
+  .series-a-banner {
+    padding: 6px 12px 6px 10px;
+    font-size: 11px;
+    gap: 8px;
+  }
+  .series-a-banner__text {
+    /* Truncate aggressively on tiny viewports so the pill stays one neat line */
+    max-width: 220px;
+  }
+}
+
+/* ── Explore link arrow slide ─────────────────────────────────────── */
+.explore-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding-bottom: 2px;
+  border-bottom: 1px solid currentColor;
+}
+.explore-link::after {
+  content: "→";
+  display: inline-block;
+  transition: transform var(--motion-normal) var(--motion-easing);
+}
+.explore-link:hover::after { transform: translateX(4px); }
+
+/* ── Theme toggle icon swap polish ────────────────────────────────── */
+.theme-toggle-icon {
+  display: inline-flex;
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.theme-toggle-icon[data-swapping="true"] {
+  transform: scale(0.6) rotate(90deg);
+  opacity: 0;
+}
+
+/* ── Marquee single-logo hover ────────────────────────────────────── */
+.logo-marquee__item {
+  transition: opacity var(--motion-normal) var(--motion-easing), transform var(--motion-normal) var(--motion-easing);
+}
+.logo-marquee:hover .logo-marquee__item:not(:hover) { opacity: 0.35; }
+.logo-marquee__item:hover { transform: translateY(-2px); }
+
+/* ── Submit pill with progress bar ────────────────────────────────── */
+.submit-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  background: var(--bg-teal);
+  color: #ffffff;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  overflow: hidden;
+  transition: background-color 200ms var(--motion-easing), transform 200ms var(--motion-easing), box-shadow 200ms var(--motion-easing), padding-inline 240ms var(--motion-easing);
+}
+.submit-pill:hover {
+  background: var(--bg-teal-hover, #c4221c);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(220, 44, 37, 0.28);
+}
+.submit-pill:active { transform: translateY(0); box-shadow: 0 4px 10px rgba(220, 44, 37, 0.22); }
+.submit-pill--block {
+  display: flex;
+  width: 100%;
+  padding-block: 16px;
+  font-size: 15px;
+}
+.submit-pill--compact {
+  padding-block: 10px;
+  padding-inline: 18px;
+  font-size: 13px;
+  letter-spacing: 0;
+}
+.submit-pill--ghost {
+  background: transparent;
+  color: var(--text-soft);
+  border: 1px solid var(--border-hairline);
+}
+.submit-pill--ghost:hover {
+  background: var(--bg-page);
+  color: var(--text-strong);
+  border-color: var(--text-strong);
+  box-shadow: none;
+}
+.submit-pill[data-state="submitting"] {
+  padding-inline: 32px;
+}
+.submit-pill__label {
+  position: relative;
+  z-index: 2;
+}
+.submit-pill__bar {
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.18);
+  transform-origin: left center;
+  transform: scaleX(0);
+  z-index: 1;
+}
+.submit-pill[data-state="submitting"] .submit-pill__bar {
+  animation: submit-progress 1.3s var(--motion-easing) forwards;
+}
+@keyframes submit-progress {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+@keyframes fade-rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Footer CTA text link — "Start a project →" with hover underline ─ */
+.footer-cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-fixed-white);
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  position: relative;
+  padding-block: 4px;
+}
+.footer-cta-link span {
+  position: relative;
+}
+.footer-cta-link span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.footer-cta-link:hover span::after { transform: scaleX(1); }
+.footer-cta-link svg {
+  transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.footer-cta-link:hover svg { transform: translateX(4px); }
+
+/* ── Theme toggle — view-transition reveal + press ring ───────────── */
+.theme-toggle { transition: background-color 200ms var(--motion-easing), transform 160ms var(--motion-easing); }
+.theme-toggle:hover { background: var(--bg-surface-muted); }
+.theme-toggle:active { transform: scale(0.92); }
+.theme-toggle__ring {
+  position: absolute;
+  inset: 50%;
+  width: 0; height: 0;
+  border-radius: 999px;
+  border: 1.5px solid var(--bg-teal);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  pointer-events: none;
+}
+.theme-toggle:active .theme-toggle__ring {
+  animation: theme-ring 520ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes theme-ring {
+  0%   { width: 6px;  height: 6px;  opacity: 0.55; }
+  100% { width: 64px; height: 64px; opacity: 0;    }
+}
+
+/* Theme switch — simple crossfade. ~260ms opacity blend, no mask, no clip-path. */
+::view-transition-old(root) {
+  z-index: 1;
+  animation: theme-fade-out 260ms ease both;
+}
+::view-transition-new(root) {
+  z-index: 2;
+  animation: theme-fade-in 260ms ease both;
+}
+@keyframes theme-fade-out { to { opacity: 0; } }
+@keyframes theme-fade-in  { from { opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) { animation: none; }
+  .theme-toggle__ring { display: none; }
+}
+
+/* ── Success checkmark — circle pops in, check draws itself ───────── */
+.success-check {
+  width: 64px;
+  height: 64px;
+  border-radius: 999px;
+  background: var(--bg-teal);
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-6);
+  position: relative;
+  transform: scale(0.6);
+  opacity: 0;
+  animation: success-pop 520ms cubic-bezier(0.34, 1.56, 0.64, 1) 80ms forwards;
+}
+.success-check::before,
+.success-check::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 2px solid var(--bg-teal);
+  opacity: 0;
+}
+.success-check::before {
+  animation: success-ring 1100ms var(--motion-easing) 360ms forwards;
+}
+.success-check::after {
+  animation: success-ring 1400ms var(--motion-easing) 480ms forwards;
+}
+.success-check__path {
+  stroke-dasharray: 30;
+  stroke-dashoffset: 30;
+  animation: success-draw 480ms cubic-bezier(0.65, 0, 0.35, 1) 360ms forwards;
+}
+
+@keyframes success-pop {
+  0%   { transform: scale(0.6); opacity: 0; }
+  60%  { transform: scale(1.08); opacity: 1; }
+  100% { transform: scale(1);    opacity: 1; }
+}
+@keyframes success-draw {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes success-ring {
+  0%   { transform: scale(1);    opacity: 0.5; }
+  100% { transform: scale(1.45); opacity: 0;   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .success-check               { transform: none; opacity: 1; animation: none; }
+  .success-check__path         { stroke-dashoffset: 0; animation: none; }
+  .success-check::before,
+  .success-check::after        { display: none; }
+}
+
+/* ── Projects grid responsive ─────────────────────────────────────── */
+@media (max-width: 900px) {
+  .projects-grid { grid-template-columns: 1fr !important; }
+}
+
+/* Blog list cards collapse on mobile */
+@media (max-width: 768px) {
+  .blog-list-item { grid-template-columns: 1fr !important; }
+  .blog-entry    { grid-template-columns: 1fr !important; }
+}
+
+/* Social icons in footer — round pill, bounce + brand-color fill on hover */
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  color: rgba(255, 255, 255, 0.92);
+  transition:
+    background-color 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 320ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform;
+}
+.social-icon svg { transition: transform 320ms cubic-bezier(0.34, 1.56, 0.64, 1); }
+.social-icon:hover {
+  background: var(--bg-teal);
+  border-color: var(--bg-teal);
+  color: #ffffff;
+  transform: translateY(-3px);
+}
+.social-icon:hover svg { transform: scale(1.1) rotate(-4deg); }
+.social-icon:active { transform: translateY(-1px) scale(0.96); }
+@media (prefers-reduced-motion: reduce) {
+  .social-icon, .social-icon svg, .social-icon:hover, .social-icon:hover svg { transition: none; transform: none; }
+}
+
+/* Title gets a subtle hover lift in the editorial list */
+.blog-entry__title {
+  transition: color var(--motion-normal) var(--motion-easing);
+}
+.blog-entry__link:hover .blog-entry__title {
+  color: var(--text-aubergine);
+}
+
+/* News-style featured card stacks on mobile */
+@media (max-width: 900px) {
+  .news-feature { grid-template-columns: 1fr !important; }
+}
+
+/* Two-column row inside forms (first/last name) */
+.form-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+@media (max-width: 540px) {
+  .form-row-2 { grid-template-columns: 1fr; }
+}
+
+/* Feature project card + project meta + service-row stack on mobile */
+@media (max-width: 768px) {
+  .feature-card  { grid-template-columns: 1fr !important; }
+  .project-meta  { grid-template-columns: 1fr !important; }
+  .service-row   { grid-template-columns: 1fr !important; gap: var(--space-4) !important; }
+  .services-bento{ grid-template-columns: 1fr !important; }
+  .bento-grid    { grid-template-columns: 1fr !important; }
+  .project-pager { grid-template-columns: 1fr !important; }
+  .footer-top    { grid-template-columns: 1fr !important; gap: var(--space-6) !important; }
+  .footer-cols   { grid-template-columns: 1fr !important; gap: var(--space-8) !important; }
+  .why-bento     { grid-template-columns: 1fr !important; }
+}
+
+/* Projects grid: collapse to 1 col on mobile, gentler vertical rhythm */
+@media (max-width: 900px) {
+  .projects-list-grid { grid-template-columns: 1fr !important; row-gap: 48px !important; }
+  .projects-feature-card { grid-template-columns: 1fr !important; }
+}
+
+/* Project card hover — image zooms + strong blurred scrim + grayscale logo */
+.project-card__frame {
+  overflow: hidden !important;
+  position: relative !important;
+}
+/* Slow, drifting dolly-in zoom — symmetric easeInOutSine so both the hover-in
+   AND the hover-out drift through the same gentle curve. No snap at either end. */
+.project-card__frame img {
+  /* CSS linear() spring — 13 control points modeling real damped-spring
+     physics (damping 22, stiffness 80). Reads as natural physical motion
+     rather than a tween. Chrome 113+ · Safari 17.4+ · Firefox 112+.
+     Older browsers fall back to default easing — still acceptable. */
+  transition: transform 1000ms linear(
+    0, 0.014, 0.054, 0.118, 0.205, 0.31,
+    0.428, 0.554, 0.682, 0.804, 0.911, 0.978, 1
+  ) !important;
+  will-change: transform;
+  transform-origin: center 60%;
+}
+/* Scrim — heavy backdrop blur on hover */
+.project-card__frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(13, 10, 8, 0.45);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  opacity: 0;
+  transition: opacity 360ms cubic-bezier(0.22, 1, 0.36, 1),
+              backdrop-filter 360ms cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 2;
+  pointer-events: none;
+}
+/* Roztomily wordmark — same SVG used in nav + footer, knocked to white */
+.project-card__frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("/roztomily/logo.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 130px auto;
+  filter: grayscale(1) brightness(0) invert(1);
+  opacity: 0;
+  transition: opacity 360ms cubic-bezier(0.22, 1, 0.36, 1) 80ms,
+              transform 480ms cubic-bezier(0.22, 1, 0.36, 1) 80ms;
+  transform: scale(0.86);
+  z-index: 3;
+  pointer-events: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  a[data-cursor="case-study"]:hover .project-card__frame img {
+    transform: scale(1.12) !important;
+  }
+  a[data-cursor="case-study"]:hover .project-card__frame::before {
+    opacity: 1;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+  }
+  a[data-cursor="case-study"]:hover .project-card__frame::after {
+    opacity: 0.88;
+    transform: scale(1);
+  }
+  a[data-cursor="case-study"]:hover h2,
+  a[data-cursor="case-study"]:hover h1,
+  a[data-cursor="case-study"]:hover h4 {
+    color: var(--bg-teal);
+    transition: color 240ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+
+/* Category tag — hide on hover so the logo + scrim read cleanly */
+.project-card__tag {
+  transition: opacity 280ms cubic-bezier(0.22, 1, 0.36, 1),
+              transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+@media (hover: hover) and (pointer: fine) {
+  a[data-cursor="case-study"]:hover .project-card__frame .project-card__tag {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+/* Project detail gallery — stack on phones, 2-col on tablet+ */
+@media (max-width: 640px) {
+  .project-gallery { grid-template-columns: 1fr !important; }
+}
+
+/* Projects filter pill hover */
+.projects-filter button:hover:not([data-active="true"]) {
+  border-color: var(--text-soft) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Why-bento cards lift subtly on hover */
+.why-card { will-change: background, border-color; }
+.why-card:hover {
+  background: rgba(255,255,255,0.07) !important;
+  border-color: rgba(255,255,255,0.2) !important;
+}
+/* On mobile, reset all bento cards to a single column even if inline gridColumn says otherwise. */
+@media (max-width: 768px) {
+  .why-card { grid-column: auto !important; }
+  /* Relax tall minimum row heights so single-column bentos don't bloat on phones. */
+  .bento-grid,
+  .services-bento,
+  .why-bento { grid-auto-rows: auto !important; }
+  .bento-card,
+  .why-card { min-height: 0 !important; }
+}
+
+/* ── Mobile drawer — full-screen translucent overlay ──────────────── */
+.mobile-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  background: rgba(255, 250, 245, 0.96);
+  backdrop-filter: saturate(120%) blur(14px);
+  -webkit-backdrop-filter: saturate(120%) blur(14px);
+  display: flex;
+  flex-direction: column;
+  padding-top: var(--space-4);
+  padding-bottom: var(--space-12);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 260ms cubic-bezier(0.22, 1, 0.36, 1), transform 260ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 260ms;
+  overflow-y: auto;
+  color: var(--text-primary);
+}
+.mobile-drawer[data-open="true"] {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: opacity 260ms cubic-bezier(0.22, 1, 0.36, 1), transform 260ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0s;
+}
+
+[data-theme="dark"] .mobile-drawer {
+  background: rgba(13, 10, 8, 0.96);
+  color: var(--text-fixed-white);
+}
+
+.mobile-drawer__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: var(--space-4);
+  margin-bottom: var(--space-10);
+}
+
+.mobile-drawer__nav {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+[data-theme="dark"] .mobile-drawer__nav { border-top-color: rgba(255, 255, 255, 0.12); }
+
+.mobile-drawer__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 4px;
+  font-family: var(--font-display);
+  font-size: 28px;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+  color: inherit;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  transition: color 200ms var(--motion-easing), padding-left 240ms var(--motion-easing);
+}
+[data-theme="dark"] .mobile-drawer__item { border-bottom-color: rgba(255, 255, 255, 0.12); }
+.mobile-drawer__item svg { transition: transform 240ms var(--motion-easing); opacity: 0.6; }
+.mobile-drawer__item:hover { color: var(--bg-teal); padding-left: 8px; }
+.mobile-drawer__item:hover svg { transform: translateX(4px); opacity: 1; }
+.mobile-drawer__item[data-active="true"] { color: var(--bg-teal); }
+
+.mobile-drawer__cta {
+  margin-top: var(--space-10);
+  display: flex;
+  justify-content: stretch;
+}
+.mobile-drawer__cta .pill,
+.mobile-drawer__cta a {
+  width: 100%;
+  justify-content: center;
+  padding-block: 18px;
+  font-size: 16px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-drawer { transition: opacity 100ms linear; transform: none; }
+}

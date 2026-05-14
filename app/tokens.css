@@ -1,0 +1,274 @@
+/* Design tokens — extracted from duna.com (see refs/tokens/tokens.json).
+   This is the single source of truth. Change here = ripple everywhere. */
+
+@font-face {
+  font-family: "GT America";
+  src: url("/fonts/gt-america-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "GT America";
+  src: url("/fonts/gt-america-medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Delight Mother";
+  src: url("/fonts/delight-mother-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Fragment Mono";
+  src: url("/fonts/fragment-mono-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* ── COLOR — LIGHT (default) ────────────────────────────────────── */
+  --bg-page:           #ffffff;
+  --bg-surface:        #edece7;   /* warm cream — primary section fill */
+  --bg-surface-muted:  #f7f7f5;
+  --bg-inverse:        #160f0c;   /* footer / dark sections */
+  --bg-teal:           #dc2c25;   /* Roztomily red, primary accent */
+  --bg-teal-hover:     #b41c16;   /* deeper red for button hover */
+  --bg-lime:           #f5b942;   /* warm amber — secondary accent */
+
+  --text-primary:    #000000;
+  --text-soft:       #1a1816;
+  --text-warm:       #292421;
+  --text-muted:      #4d4846;
+  --text-subtle:     #898683;
+  --text-on-dark:    #ffffff;
+  --text-on-dark-muted: rgba(255, 255, 255, 0.6);
+  --text-aubergine:  #1b0624;
+
+  /* Theme-locked text colors — for elements sitting on baked-in painterly
+     backgrounds that DON'T change with theme (hero photo, footer photo,
+     dark feature cards). These never flip in dark mode. */
+  --text-fixed-ink:   #0d0a08;             /* always-dark text — for light painterly bgs */
+  --text-fixed-warm:  #2d2520;             /* always-dark body — for light painterly bgs */
+  --text-fixed-muted: rgba(13, 10, 8, 0.62);
+  --text-fixed-white: #ffffff;             /* always-white text — for dark painterly / dark cards */
+  --text-fixed-white-muted: rgba(255, 255, 255, 0.7);
+
+  --border-hairline: rgba(0, 0, 0, 0.04);
+  --border-soft:     rgba(187, 187, 187, 0.15);
+
+  --logo-filter: brightness(0);              /* logos render dark on light */
+  --nav-bg:      rgba(255, 255, 255, 0.32);  /* very translucent — blur does the heavy lifting */
+  --card-bg:     #ffffff;
+  --hairline-strong: rgba(0,0,0,0.08);
+  /* Product card frame stays warm cream so duna UI screenshots read correctly. */
+  --product-card-bg:    #edece7;
+  --product-card-border: rgba(0, 0, 0, 0.04);
+
+  /* Contact page — scrim + bottom-fade tokens, theme-aware */
+  --contact-scrim: linear-gradient(to bottom, rgba(255,250,245,0.32) 0%, rgba(255,250,245,0.55) 100%);
+  --contact-fade:  linear-gradient(to bottom, rgba(255,250,245,0) 0%, #fffaf5 45%, #fffaf5 100%);
+
+  /* ── TYPOGRAPHY ────────────────────────────────────────────────── */
+  --font-sans:     "GT America", -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+  --font-display:  "GT America", -apple-system, sans-serif;
+  --font-serif:    "Delight Mother", Times, serif;
+  --font-mono:     "Fragment Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-extended: "Big Shoulders", "Big Shoulders Display", Impact, sans-serif;
+
+  /* Type scale (size / line-height / tracking) */
+  --type-display-xl-size: 80px;   --type-display-xl-lh: 80px;   --type-display-xl-tr: -0.05em;
+  --type-display-l-size:  72px;   --type-display-l-lh:  72px;   --type-display-l-tr:  -0.06em;
+  --type-display-m-size:  44px;   --type-display-m-lh:  48.4px; --type-display-m-tr:  -0.05em;
+  --type-display-s-size:  40px;   --type-display-s-lh:  48px;   --type-display-s-tr:  -0.03em;
+  --type-heading-l-size:  32px;   --type-heading-l-lh:  38.4px; --type-heading-l-tr:  -0.03em;
+  --type-heading-m-size:  28px;   --type-heading-m-lh:  33.6px; --type-heading-m-tr:  -0.02em;
+  --type-heading-s-size:  24px;   --type-heading-s-lh:  28px;   --type-heading-s-tr:  -0.02em;
+  --type-body-l-size:     20px;   --type-body-l-lh:     30px;   --type-body-l-tr:     -0.02em;
+  --type-body-m-size:     18px;   --type-body-m-lh:     25.2px; --type-body-m-tr:     -0.01em;
+  --type-body-size:       16px;   --type-body-lh:       24px;   --type-body-tr:       -0.01em;
+  --type-body-s-size:     14px;   --type-body-s-lh:     21px;   --type-body-s-tr:     -0.01em;
+  --type-caption-size:    12px;   --type-caption-lh:    15.6px; --type-caption-tr:    0.02em;
+
+  /* ── RADIUS ────────────────────────────────────────────────────── */
+  --radius-xs:  6px;
+  --radius-sm:  8px;
+  --radius-md:  12px;
+  --radius-lg:  16px;
+  --radius-xl:  24px;
+  --radius-2xl: 40px;
+  --radius-3xl: 60px;
+  --radius-pill: 999px;
+
+  /* ── SPACING (4px grid) ────────────────────────────────────────── */
+  --space-0:    0;
+  --space-05:   2px;
+  --space-1:    4px;
+  --space-15:   6px;
+  --space-2:    8px;
+  --space-25:   10px;
+  --space-3:    12px;
+  --space-35:   14px;
+  --space-4:    16px;
+  --space-5:    20px;
+  --space-6:    24px;
+  --space-8:    32px;
+  --space-10:   40px;
+  --space-12:   48px;
+  --space-16:   64px;
+  --space-20:   80px;
+  --space-24:   96px;
+  --space-32:   128px;
+  --space-35:   140px;
+
+  /* ── SHADOW ────────────────────────────────────────────────────── */
+  --shadow-card: 0 0.6px 1.8px -0.7px rgba(45, 32, 50, 0.08),
+                 0 2.3px 6.9px -1.3px rgba(45, 32, 50, 0.09),
+                 0 10px 30px -2px rgba(45, 32, 50, 0.12);
+
+  /* ── MOTION ────────────────────────────────────────────────────── */
+  --motion-fast:   150ms;
+  --motion-normal: 220ms;
+  --motion-slow:   400ms;
+  --motion-easing: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ── LAYOUT ────────────────────────────────────────────────────── */
+  --container-max: 1280px;
+  --container-pad: 24px;
+  --section-pad-y: 128px;
+  --nav-height:    73px;        /* used by hero sections to extend under the sticky transparent nav */
+}
+
+/* Tablet/mobile section padding */
+@media (max-width: 768px) {
+  :root {
+    --section-pad-y: 80px;
+    --container-pad: 20px;
+  }
+}
+
+/* ── COLOR — DARK ─────────────────────────────────────────────────── */
+/* Lock-to-light helper — apply data-theme="light" to any section to force
+   light tokens regardless of the global theme (used for /contact form area). */
+[data-theme="light"] {
+  --bg-page:           #ffffff;
+  --bg-surface:        #edece7;
+  --bg-surface-muted:  #f7f7f5;
+  --bg-inverse:        #160f0c;
+  --text-primary:      #000000;
+  --text-soft:         #1a1816;
+  --text-warm:         #292421;
+  --text-muted:        #4d4846;
+  --text-subtle:       #898683;
+  --border-hairline:   rgba(0, 0, 0, 0.04);
+  --border-soft:       rgba(187, 187, 187, 0.15);
+  --card-bg:           #ffffff;
+  --hairline-strong:   rgba(0, 0, 0, 0.08);
+  --product-card-bg:   #edece7;
+  --nav-bg:            rgba(255, 255, 255, 0.32);
+}
+
+[data-theme="dark"] {
+  --bg-page:           #0a0807;   /* deep espresso — base */
+  --bg-surface:        #1c1815;   /* lifted card surface */
+  --bg-surface-muted:  #13100e;   /* slightly darker than page */
+  --bg-inverse:        #f7f5f0;   /* inverted card on dark */
+  --bg-teal:           #ff4d3f;   /* Roztomily red, lifted for dark */
+  --bg-teal-hover:     #ff6657;   /* lifted hover for dark */
+  --bg-lime:           #ffc966;
+
+  /* Contact page dark-mode overrides */
+  --contact-scrim: linear-gradient(to bottom, rgba(10,8,7,0.62) 0%, rgba(10,8,7,0.78) 100%);
+  --contact-fade:  linear-gradient(to bottom, rgba(10,8,7,0) 0%, #0a0807 45%, #0a0807 100%);
+
+  --text-primary:    #ffffff;
+  --text-soft:       #f7f5f0;
+  --text-warm:       #e8e4dd;
+  --text-muted:      #aaa39b;
+  --text-subtle:     #6b6660;
+  --text-on-dark:    #0d0a08;     /* now used on light cards inside dark mode */
+  --text-on-dark-muted: rgba(13, 10, 8, 0.7);
+  --text-aubergine:  #e9d8ee;
+
+  --border-hairline: rgba(255, 255, 255, 0.06);
+  --border-soft:     rgba(255, 255, 255, 0.12);
+
+  --logo-filter: brightness(0) invert(1);    /* logos render light on dark */
+  --nav-bg:      rgba(13, 10, 8, 0.32);      /* translucent — blur reads through */
+  --card-bg:     #1a1614;
+  --hairline-strong: rgba(255,255,255,0.12);
+  /* In dark mode, product cards remain cream "islands" so the duna UI screenshots
+     keep their integrity — but the bg is slightly muted + a soft ring frames them. */
+  --product-card-bg:    #e5e1d8;
+  --product-card-border: rgba(255, 255, 255, 0.06);
+
+  color-scheme: dark;
+}
+
+/* ── REBRAND TEST PALETTE ─────────────────────────────────────────
+   Apply with: document.documentElement.dataset.theme = "rebrand"
+   Used by task #18 to validate the design system holds under a full
+   token swap. Removed nothing, added a variant. The visual identity
+   moves to a deep-emerald + apricot scheme with serif headlines. */
+[data-theme="rebrand"] {
+  --bg-page:           #fffaf2;   /* warm ivory */
+  --bg-surface:        #d8ecdf;   /* sage mint */
+  --bg-surface-muted:  #f3ebd9;   /* paler ivory */
+  --bg-inverse:        #0d2e22;   /* deep emerald */
+  --bg-teal:           #ff8a5b;   /* coral accent */
+  --bg-lime:           #ffd96a;   /* honey */
+
+  --text-primary:    #0d2e22;
+  --text-soft:       #103d2d;
+  --text-warm:       #1a4937;
+  --text-muted:      #4b6a5b;
+  --text-subtle:     #7e8e83;
+  --text-on-dark:    #fffaf2;
+  --text-on-dark-muted: rgba(255, 250, 242, 0.7);
+
+  --border-hairline: rgba(13, 46, 34, 0.08);
+  --border-soft:     rgba(13, 46, 34, 0.16);
+  --hairline-strong: rgba(13, 46, 34, 0.18);
+
+  --logo-filter: brightness(0) saturate(100%) invert(15%) sepia(72%) saturate(800%) hue-rotate(120deg);
+  --nav-bg:      rgba(255, 250, 242, 0.85);
+  --card-bg:     #fffaf2;
+
+  /* Type identity flip: display becomes serif */
+  --font-display: "Delight Mother", "GT America", Times, serif;
+  --type-display-l-tr: -0.04em;
+  --type-display-m-tr: -0.03em;
+  --radius-xl: 8px;          /* tighter geometry */
+  --radius-lg: 6px;
+  --shadow-card: 0 12px 28px -16px rgba(13, 46, 34, 0.35);
+}
+
+/* Respect system preference if user hasn't explicitly set one */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --bg-page:           #0d0a08;
+    --bg-surface:        #1a1614;
+    --bg-surface-muted:  #15110f;
+    --bg-inverse:        #f7f5f0;
+    --bg-teal:           #5fb0bc;
+    --bg-lime:           #c8ff3a;
+    --text-primary:    #ffffff;
+    --text-soft:       #f7f5f0;
+    --text-warm:       #e8e4dd;
+    --text-muted:      #aaa39b;
+    --text-subtle:     #6b6660;
+    --text-on-dark:    #0d0a08;
+    --text-on-dark-muted: rgba(13, 10, 8, 0.7);
+    --border-hairline: rgba(255, 255, 255, 0.06);
+    --border-soft:     rgba(255, 255, 255, 0.12);
+    --logo-filter: brightness(0) invert(1);
+    --nav-bg:      rgba(13, 10, 8, 0.32);
+    --card-bg:     #1a1614;
+    --hairline-strong: rgba(255,255,255,0.12);
+    color-scheme: dark;
+  }
+}

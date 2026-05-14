@@ -1,65 +1,112 @@
-import Image from "next/image";
+import { Hero } from "@/components/blocks/Hero";
+import { TrustedBy } from "@/components/blocks/TrustedBy";
+import { ProductSection } from "@/components/blocks/ProductSection";
+import { SafeAndSecure } from "@/components/blocks/SafeAndSecure";
+import { NewsRow } from "@/components/blocks/NewsRow";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <>
+      <Hero />
+      <TrustedBy />
+
+      <ProductSection
+        eyebrow="PR & Brand Marketing"
+        title="We shape perception and build credibility."
+        body="From narrative development to strategic communications, we help brands own their story and earn public trust, across earned media, executive thought leadership, and crisis response."
+        href="/services"
+        images={[
+          "/roztomily/services/pr-and-brand-marketing.jpg",
+          "/roztomily/imagery/services/media/04-typewriter-newspaper.jpg",
+          "/roztomily/imagery/services/media/01-office-desks.jpg",
+        ]}
+        features={[]}
+        background="page"
+      />
+
+      <ProductSection
+        eyebrow="Experiential Marketing"
+        title="Brand experiences people remember."
+        body="Immersive activations that create emotional connection, drive engagement, and turn audiences into communities, from mall takeovers to brand-led events and grassroots open-market activations."
+        href="/services"
+        imageSide="left"
+        background="surface"
+        images={[
+          "/roztomily/services/experiential-marketing.jpg",
+          "/roztomily/imagery/services/experiential/01-installation-crowd.jpg",
+          "/roztomily/imagery/services/experiential/02-venue-tables.jpg",
+          "/roztomily/imagery/services/experiential/04-concert-stage-lasers.jpg",
+        ]}
+        features={[
+          { title: "Mall + market activations",  body: "Bring the brand to where the foot traffic already is." },
+          { title: "Brand-led events",            body: "Concept, production, guest experience, and earned media in one pass." },
+          { title: "Ambassador meet-and-greets",  body: "Talent-led moments that move product and sentiment." },
+          { title: "Grassroots community work",   body: "Open-market activations that build emotional brand share." },
+        ]}
+      />
+
+      <ProductSection
+        eyebrow="Creative Production & Advertising"
+        title="Ideas, made tangible."
+        body="We bring ideas to life through high-impact visuals, campaigns, and storytelling that cut through the noise, TVCs, OOH, social-first content, and integrated rollouts. End-to-end, from script to final delivery."
+        href="/services"
+        images={[
+          "/roztomily/services/creative-production-and-advertising.jpg",
+          "/roztomily/imagery/services/creative/01-film-set-crew.jpg",
+          "/roztomily/imagery/services/creative/02-cameraman-silhouette.jpg",
+          "/roztomily/imagery/services/creative/03-camera-tripod.jpg",
+        ]}
+        background="page"
+        features={[
+          { title: "TVCs end-to-end",             body: "Concept · casting · location · production · post, under one roof." },
+          { title: "Campaign rollout",            body: "OOH, print, digital, and PR amplification, sequenced for momentum." },
+          { title: "Content systems",             body: "Repeatable formats your team can run with after we're gone." },
+          { title: "Quality control",             body: "One producer, one timeline, one source of truth." },
+        ]}
+      />
+
+      <ProductSection
+        eyebrow="Media Relations & Media Buying"
+        title="Connecting brands to the right audiences."
+        body="Powerful media relationships paired with data-driven placements across traditional and digital channels. We don&apos;t just buy media, we earn it, place it, and measure it."
+        href="/services"
+        imageSide="left"
+        background="surface"
+        features={[
+          { title: "Earned media",                body: "Long-standing relationships with print, broadcast, and digital editors across Nigeria + West Africa." },
+          { title: "Paid media planning",         body: "Cost-aware buys across TV, radio, OOH, digital, and influencer." },
+          { title: "Crisis response",             body: "Structured frameworks that stabilise narrative under pressure." },
+          { title: "Performance reporting",       body: "Reach, share-of-voice, sentiment, quantified, not vibed." },
+        ]}
+        images={[
+          "/roztomily/services/media-relations-and-buying.png",
+          "/roztomily/imagery/services/media/02-conference-room.jpg",
+          "/roztomily/imagery/services/media/01-office-desks.jpg",
+          "/roztomily/imagery/services/media/04-typewriter-newspaper.jpg",
+        ]}
+      />
+
+      <ProductSection
+        eyebrow="Digital Marketing"
+        title="Visibility, engagement, conversion."
+        body="Digital ecosystems that drive measurable outcomes through performance campaigns, content, and social strategy. We build for the funnel, not the impression count."
+        href="/services"
+        background="muted"
+        images={[
+          "/roztomily/services/digital-marketing.jpg",
+          "/roztomily/imagery/services/digital/01-phone-social.jpg",
+          "/roztomily/imagery/services/digital/02-phone-laptop.jpg",
+        ]}
+        features={[
+          { title: "Performance campaigns",       body: "Paid social, search, and affiliate, built around the metric that matters." },
+          { title: "Social strategy",             body: "Editorial calendars that match brand voice + audience cadence." },
+          { title: "Content production",          body: "Scroll-stopping creative made for the platforms it&apos;ll live on." },
+          { title: "Community management",        body: "Native moderation, response, and tone-matched conversation." },
+        ]}
+      />
+
+      <SafeAndSecure />
+      <NewsRow />
+    </>
   );
 }
