@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { projectSlugs } from "@/lib/projects";
 
 const SITE = "https://roztomilygroup.com";
 
@@ -9,17 +10,6 @@ const SERVICE_SLUGS = [
   "media-relations-and-media-buying",
   "digital-marketing",
   "talent-management",
-];
-
-const PROJECT_SLUGS = [
-  "valuejet-brand-launch",
-  "premier-cool-ready-up-your-cool",
-  "bord-bia-meet-the-maker",
-  "kerrygold-world-milk-day",
-  "good-mama-9ja-queen-fashion-show",
-  "carex-carextra-campaign",
-  "regal-turn-up-and-shine",
-  "jamila-lawal",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -37,7 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "monthly" as const,
     priority: 0.7,
   }));
-  const projects = PROJECT_SLUGS.map((slug) => ({
+  const projects = projectSlugs().map((slug) => ({
     url: `${SITE}/projects/${slug}`,
     changeFrequency: "yearly" as const,
     priority: 0.6,
