@@ -71,20 +71,8 @@ export function Hero() {
         </Reveal>
 
         <Reveal delay={180}>
-          <div style={{ marginTop: "var(--space-8)", display: "flex", flexDirection: "column", alignItems: "center", gap: 14 }}>
+          <div style={{ marginTop: "var(--space-8)", display: "flex", justifyContent: "center" }}>
             <Pill href="/contact">Start a project</Pill>
-            <Link
-              href="/about"
-              style={{
-                fontSize: 14,
-                color: "rgba(255,250,245,0.78)",
-                borderBottom: "1px solid rgba(255,250,245,0.32)",
-                paddingBottom: 2,
-                letterSpacing: "-0.005em",
-              }}
-            >
-              About Roztomily <span aria-hidden>→</span>
-            </Link>
           </div>
         </Reveal>
       </Container>
