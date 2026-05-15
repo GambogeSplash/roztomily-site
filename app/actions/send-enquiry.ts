@@ -81,6 +81,7 @@ export async function sendEnquiry(formData: FormData): Promise<EnquiryResult> {
     </div>
   `.trim();
 
+  // 1) Notification email to the Roztomily team
   try {
     const { error } = await resend.emails.send({
       from: FROM,
@@ -91,14 +92,67 @@ export async function sendEnquiry(formData: FormData): Promise<EnquiryResult> {
       text,
     });
     if (error) {
-      console.error("Resend error:", error);
+      console.error("Resend error (team):", error);
       return { ok: false, error: "Couldn't send right now. Please try again or email us directly." };
     }
-    return { ok: true };
   } catch (e) {
-    console.error("Send enquiry threw:", e);
+    console.error("Send enquiry threw (team):", e);
     return { ok: false, error: "Couldn't send right now. Please try again or email us directly." };
   }
+
+  // 2) Autoresponder to the client — never blocks success.
+  // If this fails, we still consider the submission successful since the team got it.
+  try {
+    const autoHtml = `
+      <div style="font-family: -apple-system, system-ui, sans-serif; color: #1a1816; max-width: 560px; line-height: 1.6;">
+        <p style="font-size: 16px; margin: 0 0 16px 0;">Hi ${escapeHtml(firstName)},</p>
+        <p style="font-size: 15px; margin: 0 0 16px 0;">
+          Thanks for reaching out to Roztomily. We&rsquo;ve received your enquiry${
+            services.length > 0 ? ` about <strong>${escapeHtml(servicesLine)}</strong>` : ""
+          } and one of the team will get back to you within one business day.
+        </p>
+        <p style="font-size: 15px; margin: 0 0 16px 0;">
+          For anything urgent in the meantime, reply directly to this email or write to
+          <a href="mailto:${TO}" style="color: #dc2c25;">${TO}</a>.
+        </p>
+        <p style="font-size: 15px; margin: 24px 0 4px 0;">— The Roztomily team</p>
+        <p style="font-size: 13px; color: #898683; margin: 0;">Lagos · Briefs welcome from anywhere</p>
+        <hr style="border: 0; border-top: 1px solid #e0ddd6; margin: 28px 0 12px 0;" />
+        <p style="font-size: 11px; color: #898683; margin: 0;">
+          This is an automated acknowledgement. A real human will reply soon.
+        </p>
+      </div>
+    `.trim();
+
+    const autoText = [
+      `Hi ${firstName},`,
+      "",
+      `Thanks for reaching out to Roztomily. We've received your enquiry${
+        services.length > 0 ? ` about ${servicesLine}` : ""
+      } and one of the team will get back to you within one business day.`,
+      "",
+      `For anything urgent in the meantime, reply directly to this email or write to ${TO}.`,
+      "",
+      "— The Roztomily team",
+      "Lagos · Briefs welcome from anywhere",
+      "",
+      "(This is an automated acknowledgement. A real human will reply soon.)",
+    ].join("\n");
+
+    await resend.emails.send({
+      from: FROM,
+      to: email,
+      replyTo: TO,
+      subject: `Thanks ${firstName} — we got your enquiry`,
+      html: autoHtml,
+      text: autoText,
+    });
+  } catch (e) {
+    // Autoresponder failure shouldn't surface to the user.
+    console.error("Autoresponder threw:", e);
+  }
+
+  return { ok: true };
 }
 
 function escapeHtml(s: string): string {
