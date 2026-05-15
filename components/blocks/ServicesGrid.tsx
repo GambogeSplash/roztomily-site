@@ -1,50 +1,56 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 
 type Service = {
+  number: string;
   eyebrow: string;
   title: string;
-  image: string;
+  body: string;
   href: string;
 };
 
 const SERVICES: Service[] = [
   {
+    number: "01",
     eyebrow: "PR & Brand",
     title: "We shape perception.",
-    image: "/roztomily/services/pr-and-brand-marketing.jpg",
+    body: "Narrative development, earned media, executive thought leadership, crisis response.",
     href: "/services",
   },
   {
+    number: "02",
     eyebrow: "Experiential",
     title: "Experiences people remember.",
-    image: "/roztomily/services/experiential-marketing.jpg",
+    body: "Mall activations, brand events, ambassador moments, grassroots community work.",
     href: "/services",
   },
   {
+    number: "03",
     eyebrow: "Creative Production",
     title: "Ideas, made tangible.",
-    image: "/roztomily/services/creative-production-and-advertising.jpg",
+    body: "TVCs end-to-end, campaign rollout, content systems, quality control.",
     href: "/services",
   },
   {
+    number: "04",
     eyebrow: "Media Relations",
     title: "Right audience. Right channel.",
-    image: "/roztomily/services/media-relations-and-buying.png",
+    body: "Earned media, paid planning, crisis response, performance reporting.",
     href: "/services",
   },
   {
+    number: "05",
     eyebrow: "Digital",
     title: "Visibility into conversion.",
-    image: "/roztomily/services/digital-marketing.jpg",
+    body: "Performance campaigns, social strategy, content production, community management.",
     href: "/services",
   },
   {
+    number: "06",
     eyebrow: "Talent",
     title: "We represent.",
-    image: "/roztomily/services/talent-management.jpg",
+    body: "Talent representation across nutrition, lifestyle, music, culture. Brand–talent matchmaking.",
     href: "/services",
   },
 ];
@@ -62,33 +68,32 @@ export function ServicesGrid() {
           </div>
         </Reveal>
 
-        <div className="services-grid">
+        <ul className="services-list">
           {SERVICES.map((s, i) => (
-            <Reveal key={s.title} delay={i * 50}>
-              <Link href={s.href} className="services-grid__tile">
-                <div className="services-grid__image">
-                  <Image
-                    src={s.image}
-                    alt=""
-                    fill
-                    style={{ objectFit: "cover" }}
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                </div>
-                <div className="services-grid__scrim" aria-hidden />
-                <div className="services-grid__copy">
-                  <p className="services-grid__eyebrow">{s.eyebrow}</p>
-                  <div className="services-grid__bottom">
-                    <h3 className="services-grid__title">{s.title}</h3>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden className="services-grid__arrow">
-                      <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                </div>
-              </Link>
+            <Reveal key={s.number} delay={i * 40}>
+              <li className="services-list__row">
+                <Link href={s.href} className="services-list__link">
+                  <span className="services-list__number" aria-hidden>{s.number}</span>
+                  <span className="services-list__copy">
+                    <span className="services-list__eyebrow">{s.eyebrow}</span>
+                    <span className="services-list__title">{s.title}</span>
+                  </span>
+                  <span className="services-list__body">{s.body}</span>
+                  <svg
+                    className="services-list__arrow"
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    aria-hidden
+                  >
+                    <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </Link>
+              </li>
             </Reveal>
           ))}
-        </div>
+        </ul>
       </Container>
     </section>
   );
