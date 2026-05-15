@@ -162,28 +162,6 @@ export const projects: Project[] = [
     ],
     gallery: ["/roztomily/projects/regal-turn-up-and-shine/01.jpg"],
   },
-  {
-    slug: "jamila-lawal",
-    client: "Jamila Lawal",
-    title: "Talent Management",
-    category: "Talent Management",
-    year: "Ongoing",
-    date: "Ongoing",
-    duration: "3 min read",
-    image: "/roztomily/projects/jamila-lawal/01.jpg",
-    subtitle: "Tailored talent representation for nutrition expert and food content creator Jamila Lawal.",
-    role: "Talent representation",
-    stack: ["Positioning", "Partnership negotiation", "Media exposure"],
-    body: [
-      { h: "Challenge", p: "As a nutrition expert and food content creator, Jamila Lawal required structured representation to strengthen her personal brand, secure collaborations, and expand her visibility within the health and lifestyle space." },
-      { h: "Approach", p: "We were engaged to provide tailored talent representation supporting positioning, media exposure, and partnership negotiation, allowing her to focus on content creation while building a stronger public profile." },
-      { h: "Outcomes", p: "Strengthened credibility within the nutrition and lifestyle media space. Secured brand collaborations and strategic partnerships. Increased visibility across events and industry platforms. Improved consistency in brand messaging and representation." },
-    ],
-    gallery: [
-      "/roztomily/projects/jamila-lawal/01.jpg",
-      "/roztomily/projects/jamila-lawal/02.jpg",
-    ],
-  },
 ];
 
 export const projectSlugs = (): string[] => projects.map((p) => p.slug);

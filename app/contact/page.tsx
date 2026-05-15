@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { FloatInput, FloatTextArea, FloatSelect } from "@/components/ui/FloatInput";
+import { sendEnquiry } from "@/app/actions/send-enquiry";
 
 type State = "idle" | "submitting" | "success";
 
@@ -21,11 +22,20 @@ export default function GetInTouch() {
   const [state, setState] = useState<State>("idle");
   const [followUpSubmitted, setFollowUpSubmitted] = useState(false);
   const [formKey, setFormKey] = useState(0); // bump to force a fresh form on reset
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setErrorMsg(null);
     setState("submitting");
-    window.setTimeout(() => setState("success"), 1400);
+    const formData = new FormData(e.currentTarget);
+    const result = await sendEnquiry(formData);
+    if (result.ok) {
+      setState("success");
+    } else {
+      setErrorMsg(result.error);
+      setState("idle");
+    }
   };
 
   const resetToFresh = () => {
