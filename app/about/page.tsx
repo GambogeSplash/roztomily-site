@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { getBlur } from "@/lib/blur";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
@@ -93,7 +94,7 @@ export default function About() {
             </Reveal>
             <Reveal delay={120}>
               <div style={{ borderRadius: "var(--radius-xl)", overflow: "hidden", aspectRatio: "1 / 1", position: "relative", boxShadow: "var(--shadow-card)" }}>
-                <Image src="/roztomily/imagery/strategy/01-diagram-drawing.jpg" alt="" fill style={{ objectFit: "cover" }} />
+                <Image src="/roztomily/imagery/strategy/01-diagram-drawing.jpg" alt="" fill style={{ objectFit: "cover" }} placeholder="blur" blurDataURL={getBlur("/roztomily/imagery/strategy/01-diagram-drawing.jpg")} />
               </div>
             </Reveal>
           </div>
@@ -220,7 +221,7 @@ export default function About() {
                 <TiltCard maxTilt={3}>
                   <Link href={it.href} data-cursor="case-study" style={{ display: "block" }}>
                     <div style={{ aspectRatio: "4 / 3", position: "relative", borderRadius: "var(--radius-lg)", overflow: "hidden", background: "var(--product-card-bg)" }}>
-                      <Image src={it.image} alt="" fill style={{ objectFit: "cover" }} sizes="(max-width: 768px) 100vw, 33vw" />
+                      <Image src={it.image} alt="" fill style={{ objectFit: "cover" }} sizes="(max-width: 768px) 100vw, 33vw" placeholder="blur" blurDataURL={getBlur(it.image)} />
                     </div>
                     <h4 className="t-heading-s" style={{ marginTop: "var(--space-4)" }}>{it.title}</h4>
                     <p style={{ marginTop: 6, fontSize: 13, color: "var(--text-muted)" }}>{it.tag}</p>

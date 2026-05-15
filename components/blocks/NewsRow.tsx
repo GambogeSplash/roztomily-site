@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { TiltCard } from "@/components/ui/TiltCard";
+import { getBlur } from "@/lib/blur";
 
 /* "Selected projects" block, kept under the NewsRow filename so existing imports still resolve.
    Used on the homepage to surface 3 projects from the portfolio. */
@@ -31,7 +32,7 @@ export function NewsRow() {
               <TiltCard maxTilt={3}>
                 <Link href={it.href} data-cursor="case-study" style={{ display: "block" }}>
                   <div style={{ aspectRatio: "16 / 10", position: "relative", borderRadius: "var(--radius-lg)", overflow: "hidden", background: "var(--bg-surface)" }}>
-                    <Image src={it.image} alt="" fill style={{ objectFit: "cover" }} sizes="(max-width: 768px) 100vw, 33vw" />
+                    <Image src={it.image} alt="" fill style={{ objectFit: "cover" }} sizes="(max-width: 768px) 100vw, 33vw" placeholder="blur" blurDataURL={getBlur(it.image)} />
                   </div>
                   <h4 className="t-heading-s" style={{ marginTop: "var(--space-5)" }}>{it.title}</h4>
                   <p className="t-caption" style={{ marginTop: "var(--space-2)", color: "var(--text-muted)", textTransform: "none", letterSpacing: 0 }}>

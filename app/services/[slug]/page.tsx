@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { getBlur } from "@/lib/blur";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/Container";
@@ -166,7 +167,7 @@ export default async function ServicePage(props: PageProps<"/services/[slug]">) 
               background: "var(--product-card-bg)",
             }}
           >
-            <Image src={s.image} alt="" fill style={{ objectFit: "cover" }} priority sizes="(max-width: 1024px) 100vw, 1024px" />
+            <Image src={s.image} alt="" fill style={{ objectFit: "cover" }} priority sizes="(max-width: 1024px) 100vw, 1024px" placeholder="blur" blurDataURL={getBlur(s.image)} />
           </div>
         </Reveal>
 

@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
+import { getBlur } from "@/lib/blur";
 
 type Feature = { title: string; body: string };
 
@@ -87,6 +88,8 @@ export function ProductSection({
                     transition: "opacity 360ms var(--motion-easing)",
                   }}
                   sizes="(max-width: 768px) 100vw, 600px"
+                  placeholder="blur"
+                  blurDataURL={getBlur(src)}
                 />
               ))}
             </div>

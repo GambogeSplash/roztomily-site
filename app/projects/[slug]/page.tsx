@@ -6,6 +6,7 @@ import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { projects, getProject, projectSlugs } from "@/lib/projects";
+import { getBlur } from "@/lib/blur";
 
 export async function generateStaticParams() {
   return projectSlugs().map((slug) => ({ slug }));
@@ -77,7 +78,7 @@ export default async function ProjectPage(props: PageProps<"/projects/[slug]">) 
 
           <Reveal delay={120}>
             <div style={{ marginTop: "var(--space-12)", borderRadius: "var(--radius-xl)", overflow: "hidden", aspectRatio: "16 / 9", position: "relative", boxShadow: "var(--shadow-card)" }}>
-              <Image src={p.image} alt={`${p.client}, ${p.title}`} fill style={{ objectFit: "cover" }} priority sizes="(max-width: 1024px) 100vw, 1024px" />
+              <Image src={p.image} alt={`${p.client}, ${p.title}`} fill style={{ objectFit: "cover" }} priority sizes="(max-width: 1024px) 100vw, 1024px" placeholder="blur" blurDataURL={getBlur(p.image)} />
             </div>
           </Reveal>
 
@@ -145,7 +146,7 @@ export default async function ProjectPage(props: PageProps<"/projects/[slug]">) 
                 >
                   {gallery.map((src, i) => (
                     <div key={src} style={{ position: "relative", aspectRatio: "4 / 3", borderRadius: "var(--radius-lg)", overflow: "hidden", background: "var(--product-card-bg)" }}>
-                      <Image src={src} alt={`${p.client}, image ${i + 2}`} fill style={{ objectFit: "cover" }} sizes="(max-width: 768px) 100vw, 50vw" />
+                      <Image src={src} alt={`${p.client}, image ${i + 2}`} fill style={{ objectFit: "cover" }} sizes="(max-width: 768px) 100vw, 50vw" placeholder="blur" blurDataURL={getBlur(src)} />
                     </div>
                   ))}
                 </div>
@@ -194,6 +195,8 @@ export default async function ProjectPage(props: PageProps<"/projects/[slug]">) 
                       fill
                       style={{ objectFit: "cover" }}
                       sizes="(max-width: 768px) 100vw, 33vw"
+                      placeholder="blur"
+                      blurDataURL={getBlur(rp.image)}
                     />
                     <span
                       className="project-card__tag"

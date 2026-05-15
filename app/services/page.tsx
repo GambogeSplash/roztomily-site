@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { getBlur } from "@/lib/blur";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 
@@ -162,7 +163,7 @@ export default function Services() {
                     <p className="t-body-s" style={{ marginTop: "var(--space-2)", color: "var(--text-warm)" }}>{b.body}</p>
                   </div>
                   <div style={{ flex: 1, position: "relative", margin: "0 var(--space-3) var(--space-3)", borderRadius: "var(--radius-md)", overflow: "hidden", background: "var(--product-card-bg)", minHeight: 120 }}>
-                    <Image src={b.image} alt="" fill style={{ objectFit: "cover" }} sizes="(max-width: 768px) 100vw, 600px" />
+                    <Image src={b.image} alt="" fill style={{ objectFit: "cover" }} sizes="(max-width: 768px) 100vw, 600px" placeholder="blur" blurDataURL={getBlur(b.image)} />
                   </div>
                 </div>
               </Reveal>

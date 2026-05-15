@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/ui/Reveal";
+import { getBlur } from "@/lib/blur";
 
 export type ProjectCard = {
   slug: string;
@@ -115,6 +116,8 @@ export function ProjectsGrid({ projects }: { projects: ProjectCard[] }) {
                 style={{ objectFit: "cover" }}
                 sizes="(max-width: 900px) 100vw, 820px"
                 priority
+                placeholder="blur"
+                blurDataURL={getBlur(feature.image)}
               />
               <CategoryTag>{feature.category}</CategoryTag>
             </div>
@@ -229,6 +232,8 @@ export function ProjectsGrid({ projects }: { projects: ProjectCard[] }) {
                     fill
                     style={{ objectFit: "cover" }}
                     sizes="(max-width: 768px) 100vw, 33vw"
+                    placeholder="blur"
+                    blurDataURL={getBlur(p.image)}
                   />
                   <CategoryTag>{p.category}</CategoryTag>
                 </div>
