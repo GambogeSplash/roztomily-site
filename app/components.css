@@ -1,6 +1,15 @@
 /* Shared block-level layout classes. Mobile-first responsiveness lives here
    so block components stay declarative. */
 
+/* Homepage hero headline — 64/1.04 on desktop only.
+   Below 768px, .t-display-l mobile sizes (44 then 38) take over. */
+@media (min-width: 769px) {
+  .hero-headline {
+    font-size: 64px !important;
+    line-height: 1.04 !important;
+  }
+}
+
 /* ── Hero video layer — cycles in over the static photo ──────────── */
 .hero-video {
   position: absolute;

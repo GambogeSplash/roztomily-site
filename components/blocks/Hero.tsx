@@ -57,8 +57,8 @@ export function Hero() {
 
         <Reveal delay={60}>
           <h1
-            className="t-display-l"
-            style={{ maxWidth: 760, marginInline: "auto", fontSize: 64, lineHeight: 1.04 }}
+            className="t-display-l hero-headline"
+            style={{ maxWidth: 760, marginInline: "auto" }}
           >
             We don&apos;t just market brands. We engineer influence.
           </h1>
