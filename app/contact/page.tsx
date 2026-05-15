@@ -146,6 +146,7 @@ export default function GetInTouch() {
                   border: "1px solid var(--border-soft)",
                   borderRadius: "var(--radius-lg)",
                   padding: "var(--space-5) var(--space-5) var(--space-4)",
+                  background: "var(--card-bg)",
                 }}
               >
                 <legend
@@ -153,6 +154,7 @@ export default function GetInTouch() {
                     padding: "0 var(--space-2)",
                     fontSize: 13,
                     color: "var(--text-muted)",
+                    background: "var(--card-bg)",
                     letterSpacing: "-0.005em",
                   }}
                 >
