@@ -6,7 +6,7 @@ import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { MagicCursor } from "@/components/ui/MagicCursor";
 
 /* ── SEO + social metadata ────────────────────────────────────────── */
-const SITE_URL = "https://roztomilygroup.com";
+const SITE_URL = "https://www.roztomilygroup.com";
 const SITE_NAME = "Roztomily";
 const TAGLINE = "We engineer influence.";
 const DESCRIPTION =

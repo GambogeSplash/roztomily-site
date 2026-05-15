@@ -65,7 +65,7 @@ export function Hero() {
         </Reveal>
 
         <Reveal delay={120}>
-          <p className="t-body-l" style={{ marginTop: "var(--space-6)", maxWidth: 640, marginInline: "auto", color: "rgba(255,250,245,0.86)", fontSize: 18 }}>
+          <p className="t-body-l hero-subtext" style={{ marginTop: "var(--space-6)", maxWidth: 640, marginInline: "auto", color: "rgba(255,250,245,0.86)" }}>
             Roztomily is a full-service Integrated Marketing Communications agency. We help brands be seen, understood, and remembered, across PR, media, digital, experiential, creative, and talent.
           </p>
         </Reveal>

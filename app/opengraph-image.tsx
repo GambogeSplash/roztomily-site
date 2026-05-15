@@ -1,8 +1,7 @@
 import { ImageResponse } from "next/og";
 
-/* OG image — 1200×630. Hero Lagos cityscape photo with a heavy brand-red
-   overlay so the brand reads instantly when shared on Slack, WhatsApp,
-   iMessage, Twitter/X, etc. */
+/* OG image — 1200×630. Designed entirely in code so no remote fetches
+   are needed at generation time. Reliable across social platforms. */
 
 export const runtime = "edge";
 export const alt = "Roztomily · We engineer influence.";
@@ -17,102 +16,100 @@ export default async function Image() {
           width: "100%",
           height: "100%",
           display: "flex",
-          position: "relative",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          padding: 80,
+          background:
+            "linear-gradient(135deg, #dc2c25 0%, #c4221c 40%, #6e1812 100%)",
+          color: "#fff",
           fontFamily: "system-ui, -apple-system, sans-serif",
+          position: "relative",
         }}
       >
-        {/* Hero Lagos photo */}
-        <img
-          src="https://roztomilygroup.com/roztomily/imagery/hero/06-malik-buraimoh-boats.jpg"
-          alt=""
-          style={{
-            position: "absolute",
-            inset: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-          }}
-        />
-        {/* Brand-red overlay — heavy so brand reads instantly */}
+        {/* Subtle radial highlight in top-left */}
         <div
           style={{
             position: "absolute",
-            inset: 0,
-            background:
-              "linear-gradient(135deg, rgba(220,44,37,0.88) 0%, rgba(160,24,18,0.92) 60%, rgba(60,12,10,0.95) 100%)",
+            top: 0,
+            left: 0,
+            width: 720,
+            height: 720,
+            background: "radial-gradient(circle at center, rgba(255,180,170,0.32) 0%, transparent 70%)",
           }}
         />
-        {/* Content */}
+        {/* Subtle radial darkening in bottom-right */}
         <div
           style={{
-            position: "relative",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            padding: 80,
-            color: "#fff",
-            width: "100%",
-            height: "100%",
+            position: "absolute",
+            bottom: 0,
+            right: 0,
+            width: 720,
+            height: 720,
+            background: "radial-gradient(circle at center, rgba(0,0,0,0.32) 0%, transparent 70%)",
           }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-            <div
-              style={{
-                width: 56,
-                height: 56,
-                borderRadius: 12,
-                background: "rgba(255,255,255,0.22)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: 32,
-                fontWeight: 700,
-              }}
-            >
-              R
-            </div>
-            <span style={{ fontSize: 30, fontWeight: 700, letterSpacing: -0.5 }}>
-              ROZTOMILY
-            </span>
-          </div>
+        />
 
-          <div>
-            <p
-              style={{
-                fontSize: 18,
-                letterSpacing: 4,
-                textTransform: "uppercase",
-                color: "rgba(255,255,255,0.78)",
-                marginBottom: 24,
-              }}
-            >
-              Integrated Marketing Communications · Lagos
-            </p>
-            <h1
-              style={{
-                fontSize: 84,
-                fontWeight: 600,
-                lineHeight: 1.04,
-                letterSpacing: -3,
-                margin: 0,
-                maxWidth: 980,
-              }}
-            >
-              We don&apos;t just market brands. We engineer influence.
-            </h1>
-          </div>
-
+        {/* Top: brand mark */}
+        <div style={{ display: "flex", alignItems: "center", gap: 18, zIndex: 1 }}>
           <div
             style={{
+              width: 64,
+              height: 64,
+              borderRadius: 14,
+              background: "rgba(255,255,255,0.22)",
               display: "flex",
-              justifyContent: "space-between",
-              fontSize: 18,
-              color: "rgba(255,255,255,0.82)",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: 36,
+              fontWeight: 700,
             }}
           >
-            <span>roztomilygroup.com</span>
-            <span>PR · Media · Experiential · Digital · Creative · Talent</span>
+            R
           </div>
+          <span style={{ fontSize: 32, fontWeight: 700, letterSpacing: -0.5 }}>
+            ROZTOMILY
+          </span>
+        </div>
+
+        {/* Middle: tagline */}
+        <div style={{ zIndex: 1 }}>
+          <p
+            style={{
+              fontSize: 18,
+              letterSpacing: 4,
+              textTransform: "uppercase",
+              color: "rgba(255,255,255,0.8)",
+              marginBottom: 28,
+            }}
+          >
+            Integrated Marketing Communications · Lagos
+          </p>
+          <h1
+            style={{
+              fontSize: 80,
+              fontWeight: 600,
+              lineHeight: 1.04,
+              letterSpacing: -3,
+              margin: 0,
+              maxWidth: 980,
+            }}
+          >
+            We don&apos;t just market brands. We engineer influence.
+          </h1>
+        </div>
+
+        {/* Bottom: URL + service list */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            fontSize: 18,
+            color: "rgba(255,255,255,0.82)",
+            zIndex: 1,
+          }}
+        >
+          <span>roztomilygroup.com</span>
+          <span>PR · Media · Experiential · Digital · Creative · Talent</span>
         </div>
       </div>
     ),
