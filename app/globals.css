@@ -78,3 +78,13 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .t-heading-l  { font-size: 24px; line-height: 28px; }
   .t-heading-m  { font-size: 22px; line-height: 26px; }
 }
+
+/* Phone-class: looser tracking + smaller display, more readable bodies + eyebrows */
+@media (max-width: 540px) {
+  .t-display-xl { font-size: 40px; line-height: 42px; letter-spacing: -0.04em; }
+  .t-display-l  { font-size: 38px; line-height: 40px; letter-spacing: -0.04em; }
+  .t-display-m  { font-size: 28px; line-height: 32px; letter-spacing: -0.035em; }
+  .t-display-s  { font-size: 24px; line-height: 28px; letter-spacing: -0.03em; }
+  .t-body-l     { font-size: 17px; line-height: 26px; }
+  .t-caption    { letter-spacing: 0.06em; }
+}

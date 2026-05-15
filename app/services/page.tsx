@@ -112,7 +112,7 @@ export default function Services() {
             >
               <p style={{ fontSize: 14, opacity: 0.7, marginBottom: "var(--space-6)", letterSpacing: "0.12em", textTransform: "uppercase" }}>Our promise</p>
               <blockquote className="t-display-s" style={{ maxWidth: 920, color: "#fff" }}>
-                Six disciplines. One agency. One team, one timeline, one source of truth, from the first brief to the final report.
+                PR doesn&apos;t end at the press release. It begins there. The smallest team that can take a brief from strategy to broadcast, without handing it off.
               </blockquote>
               <footer style={{ marginTop: "var(--space-8)", opacity: 0.8, fontSize: 14 }}>
                 Lagos, Nigeria · Briefs welcome from anywhere

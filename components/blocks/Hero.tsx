@@ -7,7 +7,7 @@ import { ParallaxBg } from "@/components/ui/ParallaxBg";
 export function Hero() {
   return (
     <ParallaxBg
-      speed={0.22}
+      speed={0.12}
       className="painterly-hero"
       style={{
         backgroundImage: "url('/roztomily/imagery/hero/06-malik-buraimoh-boats.jpg')",

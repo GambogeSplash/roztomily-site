@@ -35,18 +35,8 @@
     radial-gradient(ellipse 60% 40% at 50% 50%, rgba(255, 20, 15, 0.7) 0%, transparent 70%);
   mix-blend-mode: screen;
   opacity: 0;
-  /* Two animations: opacity cycle (visibility) + drift (slow lateral motion) */
-  animation:
-    hero-glare-cycle 16s ease-in-out infinite,
-    hero-glare-drift 11s ease-in-out infinite;
-  will-change: transform, opacity;
-}
-@keyframes hero-glare-drift {
-  0%   { transform: translate(-5%, -3%) scale(1.02); }
-  25%  { transform: translate(4%, -2%) scale(1.08); }
-  50%  { transform: translate(6%, 4%) scale(1.04); }
-  75%  { transform: translate(-3%, 3%) scale(1.06); }
-  100% { transform: translate(-5%, -3%) scale(1.02); }
+  animation: hero-glare-cycle 16s ease-in-out infinite;
+  will-change: opacity;
 }
 @keyframes hero-glare-cycle {
   0%, 35%   { opacity: 0.28; }  /* subtle on thumbnail */
@@ -532,24 +522,6 @@ img {
   opacity: 1;
 }
 
-/* Shimmer pass — soft highlight sweep across the glass */
-.series-a-banner::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(115deg, transparent 0, transparent 38%, rgba(255,255,255,0.28) 50%, transparent 62%, transparent 100%);
-  transform: translateX(-100%);
-  animation: shimmer-sweep 4.4s var(--motion-easing) 2s infinite;
-  pointer-events: none;
-}
-@keyframes shimmer-sweep {
-  0%   { transform: translateX(-100%); }
-  60%  { transform: translateX(140%); }
-  100% { transform: translateX(140%); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .series-a-banner::after { animation: none; opacity: 0; }
-}
 
 /* Mobile: tighter pill, smaller text */
 @media (max-width: 540px) {
@@ -882,6 +854,10 @@ img {
 @media (max-width: 900px) {
   .projects-list-grid { grid-template-columns: 1fr !important; row-gap: 48px !important; }
   .projects-feature-card { grid-template-columns: 1fr !important; }
+}
+/* Phone-class — tighter project card titles */
+@media (max-width: 540px) {
+  .projects-list-grid h2 { font-size: 17px !important; }
 }
 
 /* Project card hover — image zooms + strong blurred scrim + grayscale logo */

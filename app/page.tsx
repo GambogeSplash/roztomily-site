@@ -1,7 +1,6 @@
 import { Hero } from "@/components/blocks/Hero";
 import { TrustedBy } from "@/components/blocks/TrustedBy";
 import { ProductSection } from "@/components/blocks/ProductSection";
-import { SafeAndSecure } from "@/components/blocks/SafeAndSecure";
 import { NewsRow } from "@/components/blocks/NewsRow";
 
 export default function Home() {
@@ -104,7 +103,25 @@ export default function Home() {
         ]}
       />
 
-      <SafeAndSecure />
+      <ProductSection
+        eyebrow="Talent Management"
+        title="Talent. We represent."
+        body="We manage and represent talent across nutrition, lifestyle, music, and culture, supporting brand development, partnerships, and long-term growth. On the brand side, we source the right talent for campaigns and ensure measurable impact."
+        imageSide="left"
+        background="surface"
+        images={[
+          "/roztomily/services/talent-management.jpg",
+          "/roztomily/projects/jamila-lawal/01.jpg",
+          "/roztomily/projects/jamila-lawal/02.jpg",
+        ]}
+        features={[
+          { title: "Talent representation",   body: "Long-term partnerships with creators across nutrition, lifestyle, music, and culture." },
+          { title: "Brand–talent matchmaking",body: "Sourcing the right voice for the brief — credibility over follower count." },
+          { title: "Partnership negotiation", body: "Deal structures + rate cards that protect both sides." },
+          { title: "Campaign measurement",    body: "Measured impact — reach, engagement, sentiment, sales lift where attributable." },
+        ]}
+      />
+
       <NewsRow />
     </>
   );
