@@ -16,6 +16,12 @@ export type Project = {
   stack: string[];
   body: { h?: string; p: string }[];
   gallery?: string[];      // optional secondary images on the detail page
+  /** Cover image fit on the detail page hero — defaults to "cover". Use "contain" to letterbox instead of cropping. */
+  coverFit?: "cover" | "contain";
+  /** Cover image object-position — defaults to "center". */
+  coverPosition?: string;
+  /** Per-gallery-image object-position overrides, keyed by image src. Falls back to "center". */
+  galleryPositions?: Record<string, string>;
 };
 
 export const projects: Project[] = [
@@ -41,6 +47,9 @@ export const projects: Project[] = [
       "/roztomily/projects/good-mama-9ja-queen-fashion-show/03.jpg",
       "/roztomily/projects/good-mama-9ja-queen-fashion-show/04.jpg",
     ],
+    galleryPositions: {
+      "/roztomily/projects/good-mama-9ja-queen-fashion-show/03.jpg": "center top",
+    },
   },
   {
     slug: "valuejet-brand-launch",
@@ -99,6 +108,7 @@ export const projects: Project[] = [
       { h: "Outcomes", p: "Successfully delivered the first Meet the Maker event in Africa with strong stakeholder attendance. Achieved over 50% in earned media value across campaign coverage. Extended visibility through coordinated media and content amplification." },
     ],
     gallery: ["/roztomily/projects/bord-bia-meet-the-maker/01.jpg"],
+    coverFit: "contain",
   },
   {
     slug: "kerrygold-world-milk-day",
@@ -117,6 +127,7 @@ export const projects: Project[] = [
       { h: "Outcomes", p: "Successfully executed a three-day mall activation with strong foot traffic and consumer participation. Reached over 12 million users across digital and social platforms. Delivered over 330% value-add on influencer media spend through 40 content pieces and mentions. Increased Kerrygold's Instagram following by 20% between May and July 2022." },
     ],
     gallery: ["/roztomily/projects/kerrygold-world-milk-day/01.jpg"],
+    coverFit: "contain",
   },
   {
     slug: "carex-carextra-campaign",
@@ -152,6 +163,7 @@ export const projects: Project[] = [
       { h: "Approach", p: "On the brand side, we facilitate talent sourcing and management for campaigns and projects, ensuring the right fit, smooth execution, and measurable impact." },
       { h: "Outcomes", p: "Worked with a diverse portfolio of talents including Leo Da Silva, Deyemi Okanlawon, Mai Atafo, and Sisi Yemmie, among others." },
     ],
+    coverFit: "contain",
   },
   {
     slug: "regal-turn-up-and-shine",
@@ -170,6 +182,7 @@ export const projects: Project[] = [
       { h: "Outcomes", p: "Amplified event highlights across relevant media and digital platforms. Increased media visibility for REGAL Gin across online and print channels. Extended campaign reach through influencer-led content and post-event amplification." },
     ],
     gallery: ["/roztomily/projects/regal-turn-up-and-shine/01.jpg"],
+    coverFit: "contain",
   },
 ];
 

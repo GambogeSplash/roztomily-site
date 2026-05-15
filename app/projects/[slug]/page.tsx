@@ -41,8 +41,18 @@ export default async function ProjectPage(props: PageProps<"/projects/[slug]">) 
         .filter((s) => s.length > 0)
     : [];
 
-  // Related: up to 3 other projects, excluding the current one.
-  const related = projects.filter((rp) => rp.slug !== slug).slice(0, 3);
+  // Related: up to 3 other projects, rotated so each detail page shows a
+  // different trio. Start from the project after the current one and wrap.
+  const currentIdx = projects.findIndex((rp) => rp.slug === slug);
+  const others = projects.filter((rp) => rp.slug !== slug);
+  const startOffset = currentIdx >= 0 ? currentIdx % others.length : 0;
+  const related = others.length <= 3
+    ? others
+    : Array.from({ length: 3 }, (_, i) => others[(startOffset + i) % others.length]);
+
+  const coverFit = p.coverFit ?? "cover";
+  const coverPosition = p.coverPosition ?? "center";
+  const coverBackdrop = coverFit === "contain";
 
   return (
     <>
@@ -77,8 +87,27 @@ export default async function ProjectPage(props: PageProps<"/projects/[slug]">) 
           </div>
 
           <Reveal delay={120}>
-            <div style={{ marginTop: "var(--space-12)", borderRadius: "var(--radius-xl)", overflow: "hidden", aspectRatio: "16 / 9", position: "relative", boxShadow: "var(--shadow-card)" }}>
-              <Image src={p.image} alt={`${p.client}, ${p.title}`} fill style={{ objectFit: "cover" }} priority sizes="(max-width: 1024px) 100vw, 1024px" placeholder="blur" blurDataURL={getBlur(p.image)} />
+            <div
+              style={{
+                marginTop: "var(--space-12)",
+                borderRadius: "var(--radius-xl)",
+                overflow: "hidden",
+                aspectRatio: "16 / 9",
+                position: "relative",
+                boxShadow: "var(--shadow-card)",
+                background: coverBackdrop ? "var(--product-card-bg)" : undefined,
+              }}
+            >
+              <Image
+                src={p.image}
+                alt={`${p.client}, ${p.title}`}
+                fill
+                style={{ objectFit: coverFit, objectPosition: coverPosition }}
+                priority
+                sizes="(max-width: 1024px) 100vw, 1024px"
+                placeholder="blur"
+                blurDataURL={getBlur(p.image)}
+              />
             </div>
           </Reveal>
 
@@ -146,7 +175,15 @@ export default async function ProjectPage(props: PageProps<"/projects/[slug]">) 
                 >
                   {gallery.map((src, i) => (
                     <div key={src} style={{ position: "relative", aspectRatio: "4 / 3", borderRadius: "var(--radius-lg)", overflow: "hidden", background: "var(--product-card-bg)" }}>
-                      <Image src={src} alt={`${p.client}, image ${i + 2}`} fill style={{ objectFit: "cover" }} sizes="(max-width: 768px) 100vw, 50vw" placeholder="blur" blurDataURL={getBlur(src)} />
+                      <Image
+                        src={src}
+                        alt={`${p.client}, image ${i + 2}`}
+                        fill
+                        style={{ objectFit: "cover", objectPosition: p.galleryPositions?.[src] ?? "center" }}
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        placeholder="blur"
+                        blurDataURL={getBlur(src)}
+                      />
                     </div>
                   ))}
                 </div>

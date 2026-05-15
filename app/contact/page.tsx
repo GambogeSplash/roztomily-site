@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { FloatInput, FloatTextArea, FloatSelect } from "@/components/ui/FloatInput";
-import { sendEnquiry } from "@/app/actions/send-enquiry";
+import { sendEnquiry, sendSource } from "@/app/actions/send-enquiry";
 
 type State = "idle" | "submitting" | "success";
 
@@ -23,6 +23,12 @@ export default function GetInTouch() {
   const [followUpSubmitted, setFollowUpSubmitted] = useState(false);
   const [formKey, setFormKey] = useState(0); // bump to force a fresh form on reset
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  // Captured at submit so the follow-up "source" feedback can reference who sent it.
+  const [sender, setSender] = useState<{ firstName: string; lastName: string; email: string }>({
+    firstName: "",
+    lastName: "",
+    email: "",
+  });
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -31,6 +37,11 @@ export default function GetInTouch() {
     const formData = new FormData(e.currentTarget);
     const result = await sendEnquiry(formData);
     if (result.ok) {
+      setSender({
+        firstName: String(formData.get("firstName") ?? "").trim(),
+        lastName:  String(formData.get("lastName")  ?? "").trim(),
+        email:     String(formData.get("email")     ?? "").trim(),
+      });
       setState("success");
     } else {
       setErrorMsg(result.error);
@@ -38,10 +49,22 @@ export default function GetInTouch() {
     }
   };
 
+  const handleSourceSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const fd = new FormData(e.currentTarget);
+    fd.set("firstName", sender.firstName);
+    fd.set("lastName",  sender.lastName);
+    fd.set("email",     sender.email);
+    // Fire-and-forget — UI flips immediately, errors are silent.
+    void sendSource(fd);
+    setFollowUpSubmitted(true);
+  };
+
   const resetToFresh = () => {
     setFollowUpSubmitted(false);
     setState("idle");
     setFormKey((k) => k + 1);
+    setSender({ firstName: "", lastName: "", email: "" });
   };
 
   const isSuccess = state === "success";
@@ -271,7 +294,7 @@ export default function GetInTouch() {
                     Mind telling us how you found us? It helps us know what&apos;s working.
                   </p>
                   <form
-                    onSubmit={(e) => { e.preventDefault(); setFollowUpSubmitted(true); }}
+                    onSubmit={handleSourceSubmit}
                     style={{ display: "grid", gap: "var(--space-3)" }}
                   >
                     <FloatSelect label="How did you hear about us?" name="source">
@@ -306,10 +329,11 @@ export default function GetInTouch() {
                   <button
                     type="button"
                     onClick={resetToFresh}
-                    className="submit-pill submit-pill--ghost"
+                    className="submit-pill"
                     style={{ padding: "10px 22px" }}
                   >
                     <span className="submit-pill__label">Start another project</span>
+                    <span className="submit-pill__bar" aria-hidden />
                   </button>
                 </div>
               )}

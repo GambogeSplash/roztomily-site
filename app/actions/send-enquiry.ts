@@ -217,6 +217,60 @@ export async function sendEnquiry(formData: FormData): Promise<EnquiryResult> {
   return { ok: true };
 }
 
+/**
+ * Optional follow-up: client tells us how they heard about us, sent after
+ * the main enquiry succeeds. Routed to the same team inbox so the source
+ * lands next to the original thread.
+ */
+export async function sendSource(formData: FormData): Promise<EnquiryResult> {
+  const source    = String(formData.get("source")    ?? "").trim();
+  const firstName = String(formData.get("firstName") ?? "").trim();
+  const lastName  = String(formData.get("lastName")  ?? "").trim();
+  const email     = String(formData.get("email")     ?? "").trim();
+
+  if (!source) return { ok: true };
+  if (!process.env.RESEND_API_KEY) return { ok: true };
+
+  const resend = new Resend(process.env.RESEND_API_KEY);
+  const name = `${firstName} ${lastName}`.trim() || "(unnamed)";
+
+  const text = [
+    `Source: ${source}`,
+    `From: ${name}`,
+    email ? `Email: ${email}` : null,
+    "",
+    "Submitted as the optional follow-up after the main enquiry.",
+  ]
+    .filter(Boolean)
+    .join("\n");
+
+  const html = `
+    <div style="font-family: -apple-system, system-ui, sans-serif; color: #1a1816; max-width: 480px; line-height: 1.55;">
+      <h2 style="color: #dc2c25; font-size: 16px; margin: 0 0 14px 0;">How they found us</h2>
+      <table style="border-collapse: collapse; font-size: 14px;">
+        <tr><td style="padding: 4px 12px 4px 0; color: #898683;">Source</td><td><strong>${escapeHtml(source)}</strong></td></tr>
+        <tr><td style="padding: 4px 12px 4px 0; color: #898683;">From</td><td>${escapeHtml(name)}</td></tr>
+        ${email ? `<tr><td style="padding: 4px 12px 4px 0; color: #898683;">Email</td><td><a href="mailto:${encodeURI(email)}" style="color: #1a1816;">${escapeHtml(email)}</a></td></tr>` : ""}
+      </table>
+      <p style="margin-top: 18px; font-size: 12px; color: #898683;">Optional follow-up from roztomilygroup.com</p>
+    </div>
+  `.trim();
+
+  try {
+    await resend.emails.send({
+      from: FROM,
+      to: TO,
+      replyTo: email || undefined,
+      subject: `Source: ${source}${name !== "(unnamed)" ? ` — ${name}` : ""}`,
+      html,
+      text,
+    });
+  } catch (e) {
+    console.error("sendSource threw:", e);
+  }
+  return { ok: true };
+}
+
 function escapeHtml(s: string): string {
   return s
     .replace(/&/g, "&amp;")
