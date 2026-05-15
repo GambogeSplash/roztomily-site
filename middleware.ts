@@ -9,7 +9,10 @@ import { NextRequest, NextResponse } from "next/server";
  */
 export function middleware(req: NextRequest) {
   const host = req.headers.get("host") ?? "";
-  if (host.endsWith(".vercel.app")) {
+  // Only redirect the canonical production URL — leave preview/branch URLs
+  // (which look like roztomily-<hash>-<team>.vercel.app) alone so they
+  // can be tested.
+  if (host === "roztomily.vercel.app") {
     const url = new URL(req.url);
     url.host = "www.roztomilygroup.com";
     url.protocol = "https:";
