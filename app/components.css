@@ -371,9 +371,9 @@
   align-items: center;
   justify-content: center;
   height: 110px;
-  width: 170px;          /* fixed slot — every logo gets the same canvas */
-  flex: 0 0 170px;
-  padding-inline: 4px;
+  width: 130px;          /* fixed slot — every logo gets the same canvas */
+  flex: 0 0 130px;
+  padding-inline: 0;
 }
 .logo-marquee__item img,
 .logo-marquee__item svg {
