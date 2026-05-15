@@ -56,7 +56,7 @@ export default function About() {
         <Container style={{ color: "var(--text-fixed-white)", position: "relative" }}>
           <Reveal>
             <div style={{ maxWidth: 780, marginInline: "auto", textAlign: "center" }}>
-              <h1 className="t-display-l">Seen. Understood. Remembered.</h1>
+              <h1 className="t-display-l">Built for brands that want to be seen, understood, remembered.</h1>
             </div>
           </Reveal>
 
