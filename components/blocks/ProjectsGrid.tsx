@@ -48,15 +48,17 @@ function CategoryTag({ children }: { children: React.ReactNode }) {
         right: 10,
         bottom: 10,
         zIndex: 4,
-        padding: "4px 9px",
+        padding: "3px 9px",
         borderRadius: 7,
-        background: "var(--bg-teal)",
+        background: "rgba(220, 44, 37, 0.2)",
+        border: "1px solid var(--bg-teal)",
         color: "#ffffff",
         fontSize: 10.5,
         fontWeight: 500,
         letterSpacing: "0",
         lineHeight: 1.3,
-        boxShadow: "0 1px 4px rgba(0, 0, 0, 0.22)",
+        backdropFilter: "blur(8px)",
+        WebkitBackdropFilter: "blur(8px)",
       }}
     >
       {children}
