@@ -10,7 +10,6 @@ export type Project = {
   category: string;        // "PR & Brand Marketing", "Experiential", etc.
   year: string;            // short — e.g. "2022"
   date: string;            // longer — e.g. "October 2022"
-  duration: string;        // e.g. "4 min read"
   image: string;           // primary image — used for both card thumbnail + detail cover
   subtitle: string;
   role: string;
@@ -27,7 +26,6 @@ export const projects: Project[] = [
     category: "Experiential",
     year: "2023",
     date: "2022",
-    duration: "3 min read",
     image: "/roztomily/projects/good-mama-9ja-queen-fashion-show/01.jpg",
     subtitle: "Grassroots open-market activations bringing the Good Mama brand directly to traders and shoppers across Nigeria.",
     role: "Experiential lead",
@@ -51,7 +49,6 @@ export const projects: Project[] = [
     category: "PR & Brand Marketing",
     year: "2022",
     date: "October 2022",
-    duration: "4 min read",
     image: "/roztomily/projects/valuejet-brand-launch/01.jpg",
     subtitle: "Integrated launch communications and event execution for ValueJet's entry into the Nigerian aviation market.",
     role: "PR & brand marketing lead",
@@ -74,7 +71,6 @@ export const projects: Project[] = [
     category: "Creative Production",
     year: "2022",
     date: "2022",
-    duration: "3 min read",
     image: "/roztomily/projects/premier-cool-ready-up-your-cool/01.png",
     subtitle: "End-to-end creative production and delivery of a two-part TVC series for Premier Cool's Black Soap and Ultimate product lines.",
     role: "Creative production lead",
@@ -93,7 +89,6 @@ export const projects: Project[] = [
     category: "Experiential",
     year: "2021",
     date: "2021",
-    duration: "4 min read",
     image: "/roztomily/projects/bord-bia-meet-the-maker/01.jpg",
     subtitle: "The first Meet the Maker event in Africa · staged at the Irish Consulate in Lagos to promote premium Irish spirits in Nigeria.",
     role: "Experiential marketing lead",
@@ -112,7 +107,6 @@ export const projects: Project[] = [
     category: "Experiential",
     year: "2022",
     date: "May–July 2022",
-    duration: "4 min read",
     image: "/roztomily/projects/kerrygold-world-milk-day/01.jpg",
     subtitle: "Three-day mall activation plus influencer-led storytelling and an interactive online competition to spotlight Irish milk for World Milk Day.",
     role: "Campaign lead",
@@ -131,7 +125,6 @@ export const projects: Project[] = [
     category: "Experiential",
     year: "2022",
     date: "2022",
-    duration: "3 min read",
     image: "/roztomily/projects/carex-carextra-campaign/01.jpg",
     subtitle: "Experiential activation at Ikeja City Mall translating Carex's Carextra concept into a live care-and-pamper brand experience.",
     role: "Experiential lead",
@@ -150,7 +143,6 @@ export const projects: Project[] = [
     category: "Talent Management",
     year: "Ongoing",
     date: "Ongoing",
-    duration: "3 min read",
     image: "/roztomily/projects/talent-management/01.png",
     subtitle: "Representation and brand-side talent sourcing across media, lifestyle, music, and culture.",
     role: "Talent representation + brand sourcing",
@@ -168,7 +160,6 @@ export const projects: Project[] = [
     category: "PR & Brand Marketing",
     year: "2019",
     date: "2019",
-    duration: "3 min read",
     image: "/roztomily/projects/regal-turn-up-and-shine/01.jpg",
     subtitle: "Phased media and content amplification strategy for REGAL Gin's sponsorship of the 2019 Afrobeat Party, celebrating the legacy of Fela Anikulapo Kuti.",
     role: "PR strategy lead",

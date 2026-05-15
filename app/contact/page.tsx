@@ -196,6 +196,33 @@ export default function GetInTouch() {
                 </button>
               </div>
 
+              {errorMsg && (
+                <div
+                  role="alert"
+                  style={{
+                    marginTop: "var(--space-3)",
+                    padding: "12px 14px",
+                    borderRadius: 10,
+                    background: "rgba(220, 44, 37, 0.12)",
+                    border: "1px solid rgba(220, 44, 37, 0.32)",
+                    color: "var(--bg-teal)",
+                    fontSize: 14,
+                    textAlign: "left",
+                  }}
+                >
+                  <strong style={{ display: "block", marginBottom: 4 }}>Couldn&rsquo;t send</strong>
+                  <span style={{ color: "var(--text-warm)" }}>{errorMsg}</span>
+                  <div style={{ marginTop: 8 }}>
+                    <a
+                      href="mailto:hello@roztomilygroup.com?subject=Project%20enquiry"
+                      style={{ color: "var(--bg-teal)", borderBottom: "1px solid currentColor", fontSize: 13 }}
+                    >
+                      Email us directly →
+                    </a>
+                  </div>
+                </div>
+              )}
+
               <p style={{ marginTop: "var(--space-2)", textAlign: "center", fontSize: 12, color: "var(--text-muted)" }}>
                 By submitting you agree to our <a href="mailto:hello@roztomilygroup.com" style={{ borderBottom: "1px solid currentColor" }}>privacy policy</a>.
               </p>
