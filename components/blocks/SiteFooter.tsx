@@ -183,7 +183,7 @@ export function SiteFooter() {
 
           {/* Contact column */}
           <div>
-            <h4 className="t-caption" style={{ color: "rgba(255,255,255,0.6)", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "var(--space-4)" }}>
+            <h4 className="t-caption" style={{ color: "rgba(255,255,255,0.6)", marginBottom: "var(--space-4)" }}>
               Contact
             </h4>
             <ul style={{ display: "grid", gap: 10, fontSize: 14, color: "rgba(255,255,255,0.92)" }}>
@@ -203,7 +203,7 @@ export function SiteFooter() {
 
           {/* Socials column */}
           <div>
-            <h4 className="t-caption" style={{ color: "rgba(255,255,255,0.6)", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "var(--space-4)" }}>
+            <h4 className="t-caption" style={{ color: "rgba(255,255,255,0.6)", marginBottom: "var(--space-4)" }}>
               Follow
             </h4>
             <ul style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
@@ -238,7 +238,6 @@ export function SiteFooter() {
           }}
         >
           <span>© Roztomily Group 2026. All rights reserved.</span>
-          <span style={{ letterSpacing: "0.08em", textTransform: "uppercase", fontSize: 11 }}>Lagos, Nigeria</span>
         </div>
       </Container>
     </footer>
