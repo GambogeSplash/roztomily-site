@@ -62,10 +62,10 @@ export default function About() {
           <Reveal delay={120}>
             <div style={{ maxWidth: 600, marginInline: "auto", marginTop: "var(--space-12)", color: "rgba(255,250,245,0.86)", display: "grid", gap: "var(--space-5)" }}>
               <p className="t-body-m">
-                Roztomily was built in Lagos by people who&rsquo;d been on both sides of the brief — the brands trying to be heard, and the editors deciding what gets covered.
+                Roztomily Group is a full-service Integrated Marketing Communications agency based in Lagos, Nigeria. We exist at the intersection of strategy, creativity, and execution, helping brands navigate an increasingly complex media and consumer landscape with clarity and confidence.
               </p>
               <p className="t-body-m">
-                We run campaigns across aviation, FMCG, food, spirits, fashion, and culture — for brands that have to earn attention twice: at home in Lagos, and at scale across the continent.
+                From shaping brand narratives to executing large-scale campaigns, we partner with businesses to build visibility, strengthen perception, and drive meaningful growth.
               </p>
               <p className="t-body-m" style={{ fontStyle: "italic", color: "rgba(255,250,245,0.7)" }}>
                 We make the work. We don&apos;t just talk about it.
