@@ -48,7 +48,7 @@ export default function About() {
             style={{
               position: "absolute",
               inset: 0,
-              background: "linear-gradient(to bottom, rgba(13,10,8,0.62) 0%, rgba(13,10,8,0.74) 100%)",
+              background: "linear-gradient(to bottom, rgba(13,10,8,0.78) 0%, rgba(13,10,8,0.9) 100%)",
             }}
           />
         }
@@ -56,7 +56,7 @@ export default function About() {
         <Container style={{ color: "var(--text-fixed-white)", position: "relative" }}>
           <Reveal>
             <div style={{ maxWidth: 780, marginInline: "auto", textAlign: "center" }}>
-              <h1 className="t-display-l">Built for brands that want to be seen, understood, &amp; remembered.</h1>
+              <h1 className="t-display-l">Seen. Understood. Remembered.</h1>
             </div>
           </Reveal>
 
@@ -68,7 +68,7 @@ export default function About() {
               <p className="t-body-m">
                 From shaping brand narratives to executing large-scale campaigns, we partner with businesses to build visibility, strengthen perception, and drive meaningful growth.
               </p>
-              <p className="t-body-m" style={{ fontStyle: "italic", color: "rgba(255,250,245,0.7)" }}>
+              <p className="t-body-m" style={{ color: "rgba(255,250,245,0.7)" }}>
                 We make the work. We don&apos;t just talk about it.
               </p>
             </div>
