@@ -118,14 +118,11 @@ const organizationLd = {
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  /* Default to dark mode. User can still toggle to light via the theme button
-     (preference persists in localStorage). */
+  /* Site is locked to dark mode — no toggle, no preference flip. */
   const noFlash = `
 (function(){try{
-  var stored = localStorage.getItem('duna-theme');
-  var mode = (stored === 'light' || stored === 'dark') ? stored : 'dark';
-  document.documentElement.dataset.theme = mode;
-  document.documentElement.dataset.themeMode = mode;
+  document.documentElement.dataset.theme = 'dark';
+  document.documentElement.dataset.themeMode = 'dark';
 }catch(e){}})();`;
   return (
     <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>

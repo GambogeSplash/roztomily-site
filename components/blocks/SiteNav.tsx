@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Container } from "@/components/ui/Container";
 import { Pill } from "@/components/ui/Pill";
-import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 const NAV_ITEMS: { label: string; href: string }[] = [
   { label: "Home",     href: "/" },
@@ -114,7 +113,6 @@ export function SiteNav() {
             </nav>
 
             <div className="site-nav__actions">
-              <ThemeToggle />
               <Pill href="/contact">Start a project</Pill>
             </div>
 
