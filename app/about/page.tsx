@@ -81,7 +81,7 @@ export default function About() {
           <div className="grid-2">
             <Reveal>
               <div>
-                <Eyebrow>What sets us apart</Eyebrow>
+                <Eyebrow>What Makes Us Different</Eyebrow>
                 <h2 className="t-display-m" style={{ marginTop: "var(--space-4)" }}>Strategy. Creativity. Execution.</h2>
                 <p className="t-body-l" style={{ marginTop: "var(--space-5)", color: "var(--text-warm)" }}>
                   We don&apos;t treat PR, media, digital, or experiential as isolated functions. We bring them together into a single, cohesive communication system that works seamlessly across channels and audiences.
@@ -104,7 +104,7 @@ export default function About() {
       <section className="section section--surface">
         <Container>
           <Reveal>
-            <Eyebrow>Our approach</Eyebrow>
+            <Eyebrow>Our Approach</Eyebrow>
             <h2 className="t-display-m" style={{ marginTop: "var(--space-4)", marginBottom: "var(--space-6)" }}>Limitless creatives. No one-size-fits-all.</h2>
             <p className="t-body-l" style={{ color: "var(--text-warm)", maxWidth: 720 }}>
               Every brand has a different challenge, visibility, perception, positioning, or growth. We diagnose the core issue, design tailored communication systems, and deploy solutions that address the immediate challenge while strengthening long-term relevance.
@@ -141,7 +141,7 @@ export default function About() {
         <Container style={{ position: "relative" }}>
           <Reveal>
             <div style={{ maxWidth: 760, marginBottom: "var(--space-12)" }}>
-              <p className="t-caption" style={{ color: "rgba(255,255,255,0.6)", textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: "var(--space-3)" }}>Why choose Roztomily</p>
+              <p className="t-caption" style={{ color: "rgba(255,255,255,0.6)", textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: "var(--space-3)" }}>Why Choose Roztomily?</p>
               <h2 className="t-display-m" style={{ color: "#fff" }}>
                 Modern brands don&apos;t just need campaigns. They need momentum.
               </h2>

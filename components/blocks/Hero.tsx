@@ -32,7 +32,7 @@ export function Hero() {
             style={{
               position: "absolute",
               inset: 0,
-              background: "linear-gradient(to bottom, rgba(13,10,8,0.78) 0%, rgba(13,10,8,0.86) 100%)",
+              background: "linear-gradient(to bottom, rgba(13,10,8,0.86) 0%, rgba(13,10,8,0.92) 100%)",
               zIndex: 2,
             }}
           />
@@ -65,14 +65,26 @@ export function Hero() {
         </Reveal>
 
         <Reveal delay={120}>
-          <p className="t-body-l" style={{ marginTop: "var(--space-6)", maxWidth: 640, marginInline: "auto", color: "rgba(255,250,245,0.86)" }}>
+          <p className="t-body-l" style={{ marginTop: "var(--space-6)", maxWidth: 640, marginInline: "auto", color: "rgba(255,250,245,0.86)", fontSize: 18 }}>
             Roztomily is a full-service Integrated Marketing Communications agency. We help brands be seen, understood, and remembered, across PR, media, digital, experiential, creative, and talent.
           </p>
         </Reveal>
 
         <Reveal delay={180}>
-          <div style={{ marginTop: "var(--space-8)", display: "flex", justifyContent: "center" }}>
+          <div style={{ marginTop: "var(--space-8)", display: "flex", flexDirection: "column", alignItems: "center", gap: 14 }}>
             <Pill href="/contact">Start a project</Pill>
+            <Link
+              href="/about"
+              style={{
+                fontSize: 14,
+                color: "rgba(255,250,245,0.78)",
+                borderBottom: "1px solid rgba(255,250,245,0.32)",
+                paddingBottom: 2,
+                letterSpacing: "-0.005em",
+              }}
+            >
+              About Roztomily <span aria-hidden>→</span>
+            </Link>
           </div>
         </Reveal>
       </Container>

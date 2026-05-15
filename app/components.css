@@ -845,6 +845,35 @@ img {
   .form-row-2 { grid-template-columns: 1fr; }
 }
 
+/* Contact form — service checkboxes grid */
+.contact-services-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 16px;
+  margin-top: 8px;
+}
+.contact-service-check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text-soft);
+  cursor: pointer;
+  user-select: none;
+  padding: 4px 0;
+}
+.contact-service-check input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--border-soft);
+  border-radius: 4px;
+  accent-color: var(--bg-teal);
+  cursor: pointer;
+}
+@media (max-width: 540px) {
+  .contact-services-grid { grid-template-columns: 1fr; }
+}
+
 /* Feature project card + project meta + service-row stack on mobile */
 @media (max-width: 768px) {
   .feature-card  { grid-template-columns: 1fr !important; }

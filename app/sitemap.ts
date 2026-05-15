@@ -2,6 +2,15 @@ import type { MetadataRoute } from "next";
 
 const SITE = "https://roztomilygroup.com";
 
+const SERVICE_SLUGS = [
+  "pr-and-brand-marketing",
+  "experiential-marketing",
+  "creative-production-and-advertising",
+  "media-relations-and-media-buying",
+  "digital-marketing",
+  "talent-management",
+];
+
 const PROJECT_SLUGS = [
   "valuejet-brand-launch",
   "premier-cool-ready-up-your-cool",
@@ -23,10 +32,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE}/blog`,     changeFrequency: "monthly" as const, priority: 0.7 },
     { url: `${SITE}/contact`,  changeFrequency: "yearly"  as const, priority: 0.7 },
   ];
+  const services = SERVICE_SLUGS.map((slug) => ({
+    url: `${SITE}/services/${slug}`,
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
   const projects = PROJECT_SLUGS.map((slug) => ({
     url: `${SITE}/projects/${slug}`,
     changeFrequency: "yearly" as const,
     priority: 0.6,
   }));
-  return [...top, ...projects].map((e) => ({ ...e, lastModified: now }));
+  return [...top, ...services, ...projects].map((e) => ({ ...e, lastModified: now }));
 }

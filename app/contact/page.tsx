@@ -14,7 +14,7 @@ const SERVICES = [
   "Digital Marketing",
   "Creative Production & Advertising",
   "Talent Management",
-  "Something else",
+  "Other",
 ];
 
 export default function GetInTouch() {
@@ -134,14 +134,39 @@ export default function GetInTouch() {
                 transition: "opacity 360ms var(--motion-easing)",
               }}
             >
-              <FloatInput label="Name *"                 name="name"    required autoComplete="name" />
+              <div className="form-row-2">
+                <FloatInput label="First name *" name="firstName" required autoComplete="given-name" />
+                <FloatInput label="Last name *"  name="lastName"  required autoComplete="family-name" />
+              </div>
               <FloatInput label="Business email *"       name="email"   type="email" required autoComplete="email" />
               <FloatInput label="Company / Organisation" name="company" autoComplete="organization" />
 
-              <FloatSelect label="Service of interest *" name="service" required>
-                <option value="" disabled hidden></option>
-                {SERVICES.map((s) => <option key={s} value={s}>{s}</option>)}
-              </FloatSelect>
+              <fieldset
+                style={{
+                  border: "1px solid var(--border-soft)",
+                  borderRadius: "var(--radius-lg)",
+                  padding: "var(--space-5) var(--space-5) var(--space-4)",
+                }}
+              >
+                <legend
+                  style={{
+                    padding: "0 var(--space-2)",
+                    fontSize: 13,
+                    color: "var(--text-muted)",
+                    letterSpacing: "-0.005em",
+                  }}
+                >
+                  How can we serve you?
+                </legend>
+                <div className="contact-services-grid">
+                  {SERVICES.map((s) => (
+                    <label key={s} className="contact-service-check">
+                      <input type="checkbox" name="services" value={s} />
+                      <span>{s}</span>
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
 
               <FloatTextArea label="Tell us about the project" name="message" rows={4} />
 
