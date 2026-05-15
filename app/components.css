@@ -1034,12 +1034,13 @@ img {
   position: fixed;
   inset: 0;
   z-index: 80;
-  background: rgba(255, 250, 245, 0.96);
-  backdrop-filter: saturate(120%) blur(14px);
-  -webkit-backdrop-filter: saturate(120%) blur(14px);
+  background: rgba(255, 250, 245, 0.82);
+  backdrop-filter: saturate(140%) blur(24px);
+  -webkit-backdrop-filter: saturate(140%) blur(24px);
   display: flex;
   flex-direction: column;
-  padding-top: var(--space-4);
+  /* Top padding 0 so the drawer's top row aligns with the nav's top row exactly */
+  padding-top: 0;
   padding-bottom: var(--space-12);
   opacity: 0;
   visibility: hidden;
@@ -1056,7 +1057,7 @@ img {
 }
 
 [data-theme="dark"] .mobile-drawer {
-  background: rgba(13, 10, 8, 0.96);
+  background: rgba(13, 10, 8, 0.82);
   color: var(--text-fixed-white);
 }
 
@@ -1064,8 +1065,10 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  /* Exactly mirror the nav's paddingBlock (var(--space-4) = 16px) so the
+     close button sits where the burger was — no shift. */
   padding-block: var(--space-4);
-  margin-bottom: var(--space-10);
+  margin-bottom: var(--space-8);
 }
 
 .mobile-drawer__nav {
@@ -1081,9 +1084,9 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 22px 4px;
+  padding: 18px 4px;
   font-family: var(--font-display);
-  font-size: 28px;
+  font-size: 22px;
   letter-spacing: -0.02em;
   font-weight: 400;
   color: inherit;

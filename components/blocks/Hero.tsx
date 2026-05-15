@@ -20,19 +20,19 @@ export function Hero() {
               every ~14s, plays a few seconds, fades back to image */}
           <video
             className="hero-video"
-            src="/roztomily/imagery/videos/02-lagos-skyline-sunset.mp4"
+            src="/roztomily/imagery/videos/03-lagos-riverfront.mp4"
             autoPlay
             loop
             muted
             playsInline
             aria-hidden
           />
-          {/* Dark scrim — sits beneath the glare so red can punch through */}
+          {/* Stronger dark scrim for text legibility + atmospheric mood */}
           <div
             style={{
               position: "absolute",
               inset: 0,
-              background: "linear-gradient(to bottom, rgba(13,10,8,0.62) 0%, rgba(13,10,8,0.74) 100%)",
+              background: "linear-gradient(to bottom, rgba(13,10,8,0.78) 0%, rgba(13,10,8,0.86) 100%)",
               zIndex: 2,
             }}
           />

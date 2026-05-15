@@ -13,6 +13,7 @@ const NAV_ITEMS: { label: string; href: string }[] = [
   { label: "About",    href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Projects", href: "/projects" },
+  { label: "Blog",     href: "/blog" },
 ];
 
 export function SiteNav() {
@@ -38,12 +39,20 @@ export function SiteNav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Lock body scroll while drawer is open
+  // Lock body scroll + compensate for scrollbar to prevent horizontal shift
   useEffect(() => {
     if (drawerOpen) {
-      const prev = document.body.style.overflow;
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+      const prevOverflow = document.body.style.overflow;
+      const prevPaddingRight = document.body.style.paddingRight;
       document.body.style.overflow = "hidden";
-      return () => { document.body.style.overflow = prev; };
+      if (scrollbarWidth > 0) {
+        document.body.style.paddingRight = `${scrollbarWidth}px`;
+      }
+      return () => {
+        document.body.style.overflow = prevOverflow;
+        document.body.style.paddingRight = prevPaddingRight;
+      };
     }
   }, [drawerOpen]);
 

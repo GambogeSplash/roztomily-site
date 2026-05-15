@@ -1,18 +1,15 @@
 import type { MetadataRoute } from "next";
 
-const SITE = "https://roztomily.vercel.app";
+const SITE = "https://roztomilygroup.com";
 
 const PROJECT_SLUGS = [
   "valuejet-brand-launch",
   "premier-cool-ready-up-your-cool",
   "bord-bia-meet-the-maker",
   "kerrygold-world-milk-day",
+  "good-mama-9ja-queen-fashion-show",
   "carex-carextra-campaign",
   "regal-turn-up-and-shine",
-  "morning-fresh-30-million-gang",
-  "bet9ja-reputation-management",
-  "bb-irish-mixers-club",
-  "good-mama-9ja-queen-fashion-show",
   "jamila-lawal",
 ];
 
@@ -23,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE}/about`,    changeFrequency: "monthly" as const, priority: 0.8 },
     { url: `${SITE}/services`, changeFrequency: "monthly" as const, priority: 0.9 },
     { url: `${SITE}/projects`, changeFrequency: "weekly"  as const, priority: 0.9 },
+    { url: `${SITE}/blog`,     changeFrequency: "monthly" as const, priority: 0.7 },
     { url: `${SITE}/contact`,  changeFrequency: "yearly"  as const, priority: 0.7 },
   ];
   const projects = PROJECT_SLUGS.map((slug) => ({

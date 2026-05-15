@@ -15,9 +15,6 @@ const PROJECTS: ProjectCard[] = [
   { slug: "kerrygold-world-milk-day",         client: "Kerrygold",      title: "World Milk Day",                          year: "2022",      category: "Experiential",           image: "/roztomily/projects/kerrygold-world-milk-day/01.jpg" },
   { slug: "carex-carextra-campaign",          client: "Carex",          title: "Carextra Campaign",                       year: "2022",      category: "Experiential",           image: "/roztomily/projects/carex-carextra-campaign/01.jpg" },
   { slug: "regal-turn-up-and-shine",          client: "Regal Gin",      title: "Turn Up & Shine",                         year: "2019",      category: "PR & Brand Marketing",  image: "/roztomily/projects/regal-turn-up-and-shine/01.jpg" },
-  { slug: "morning-fresh-30-million-gang",    client: "Morning Fresh",  title: "30 Million Gang Campaign",                year: "2023",      category: "PR & Brand Marketing",  image: "/roztomily/projects/morning-fresh-30-million-gang/01.jpg" },
-  { slug: "bet9ja-reputation-management",     client: "Bet9ja",         title: "Reputation Management",                   year: "2022",      category: "Crisis Comms",           image: "/roztomily/projects/bet9ja-reputation-management/01.jpg" },
-  { slug: "bb-irish-mixers-club",             client: "Bord Bia",       title: "Irish Mixers Club",                       year: "2019–2024", category: "Experiential",           image: "/roztomily/projects/bb-irish-mixers-club/01.jpg" },
   { slug: "jamila-lawal",                     client: "Jamila Lawal",   title: "Talent Management",                       year: "Ongoing",   category: "Talent Management",      image: "/roztomily/projects/jamila-lawal/01.jpg" },
 ];
 
