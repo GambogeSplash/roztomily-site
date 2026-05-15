@@ -182,6 +182,23 @@ export default function GetInTouch() {
 
               <FloatTextArea label="Tell us about the project" name="message" rows={4} />
 
+              {/* Honeypot — invisible to humans, filled by spam bots → silently dropped */}
+              <input
+                type="text"
+                name="website_url"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                style={{
+                  position: "absolute",
+                  left: "-9999px",
+                  width: 1,
+                  height: 1,
+                  opacity: 0,
+                  pointerEvents: "none",
+                }}
+              />
+
               <div style={{ marginTop: "var(--space-4)" }}>
                 <button
                   type="submit"

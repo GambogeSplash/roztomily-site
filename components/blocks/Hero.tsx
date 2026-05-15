@@ -25,6 +25,7 @@ export function Hero() {
             loop
             muted
             playsInline
+            preload="metadata"
             aria-hidden
           />
           {/* Stronger dark scrim for text legibility + atmospheric mood */}

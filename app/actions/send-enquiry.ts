@@ -22,6 +22,13 @@ const FROM = process.env.CONTACT_FROM_EMAIL ?? "Roztomily <hello@roztomilygroup.
 export type EnquiryResult = { ok: true } | { ok: false; error: string };
 
 export async function sendEnquiry(formData: FormData): Promise<EnquiryResult> {
+  // Honeypot — bots fill every field they can find. Humans never see this one.
+  // If filled, silently "succeed" so the bot moves on without learning anything.
+  const honeypot = String(formData.get("website_url") ?? "").trim();
+  if (honeypot.length > 0) {
+    return { ok: true };
+  }
+
   const firstName = String(formData.get("firstName") ?? "").trim();
   const lastName  = String(formData.get("lastName")  ?? "").trim();
   const email     = String(formData.get("email")     ?? "").trim();
