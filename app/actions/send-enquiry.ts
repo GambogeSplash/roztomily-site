@@ -104,24 +104,86 @@ export async function sendEnquiry(formData: FormData): Promise<EnquiryResult> {
   // If this fails, we still consider the submission successful since the team got it.
   try {
     const autoHtml = `
-      <div style="font-family: -apple-system, system-ui, sans-serif; color: #1a1816; max-width: 560px; line-height: 1.6;">
-        <p style="font-size: 16px; margin: 0 0 16px 0;">Hi ${escapeHtml(firstName)},</p>
-        <p style="font-size: 15px; margin: 0 0 16px 0;">
-          Thanks for reaching out to Roztomily. We&rsquo;ve received your enquiry${
-            services.length > 0 ? ` about <strong>${escapeHtml(servicesLine)}</strong>` : ""
-          } and one of the team will get back to you within one business day.
-        </p>
-        <p style="font-size: 15px; margin: 0 0 16px 0;">
-          For anything urgent in the meantime, reply directly to this email or write to
-          <a href="mailto:${TO}" style="color: #dc2c25;">${TO}</a>.
-        </p>
-        <p style="font-size: 15px; margin: 24px 0 4px 0;">— The Roztomily team</p>
-        <p style="font-size: 13px; color: #898683; margin: 0;">Lagos · Briefs welcome from anywhere</p>
-        <hr style="border: 0; border-top: 1px solid #e0ddd6; margin: 28px 0 12px 0;" />
-        <p style="font-size: 11px; color: #898683; margin: 0;">
-          This is an automated acknowledgement. A real human will reply soon.
-        </p>
-      </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>We got your enquiry</title>
+</head>
+<body style="margin: 0; padding: 0; background: #f5f3ee; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">
+  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background: #f5f3ee;">
+    <tr>
+      <td align="center" style="padding: 40px 20px;">
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="560" style="background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 16px rgba(0,0,0,0.06); max-width: 560px;">
+
+          <!-- Brand-red header bar -->
+          <tr>
+            <td style="background: #dc2c25; padding: 32px 40px; color: #ffffff;">
+              <div style="font-family: 'Big Shoulders', 'Big Shoulders Display', Impact, sans-serif; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; font-size: 24px; line-height: 1;">
+                ROZTOMILY
+              </div>
+              <div style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.78); margin-top: 8px;">
+                Integrated Marketing Communications · Lagos
+              </div>
+            </td>
+          </tr>
+
+          <!-- Body -->
+          <tr>
+            <td style="padding: 36px 40px 8px 40px; color: #1a1816;">
+              <h1 style="font-size: 26px; line-height: 1.15; letter-spacing: -0.02em; font-weight: 500; margin: 0 0 20px 0; color: #0d0a08;">
+                Thanks, ${escapeHtml(firstName)} — we&rsquo;ve got your enquiry.
+              </h1>
+              <p style="font-size: 15px; line-height: 1.6; margin: 0 0 16px 0; color: #292421;">
+                Someone from the team will reply within <strong>one business day</strong>${
+                  services.length > 0 ? ` about <strong>${escapeHtml(servicesLine)}</strong>` : ""
+                }.
+              </p>
+              <p style="font-size: 15px; line-height: 1.6; margin: 0 0 8px 0; color: #292421;">
+                If anything is urgent in the meantime, reply directly to this email or write to
+                <a href="mailto:${TO}" style="color: #dc2c25; text-decoration: none; border-bottom: 1px solid #dc2c25;">${TO}</a>.
+              </p>
+            </td>
+          </tr>
+
+          <!-- Quote summary card -->
+          ${message ? `<tr>
+            <td style="padding: 16px 40px 8px 40px;">
+              <div style="background: #f7f6f2; border-left: 3px solid #dc2c25; padding: 16px 18px; border-radius: 0 8px 8px 0; font-size: 14px; line-height: 1.55; color: #4d4846; font-style: italic;">
+                &ldquo;${escapeHtml(message).replace(/\n/g, "<br>")}&rdquo;
+              </div>
+              <div style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #898683; margin-top: 10px;">
+                What you sent us
+              </div>
+            </td>
+          </tr>` : ""}
+
+          <!-- Sign-off -->
+          <tr>
+            <td style="padding: 28px 40px 36px 40px;">
+              <p style="font-size: 15px; line-height: 1.6; margin: 0; color: #1a1816;">— The Roztomily team</p>
+              <p style="font-size: 13px; color: #898683; margin: 4px 0 0 0;">Lagos · Briefs welcome from anywhere</p>
+            </td>
+          </tr>
+
+          <!-- Footer disclaimer -->
+          <tr>
+            <td style="background: #f7f6f2; padding: 18px 40px; border-top: 1px solid #ecebe5;">
+              <p style="font-size: 11px; color: #898683; margin: 0; line-height: 1.5;">
+                This is an automated acknowledgement &mdash; a real human will reply soon.
+                You received this because you submitted an enquiry at
+                <a href="https://www.roztomilygroup.com" style="color: #898683;">roztomilygroup.com</a>.
+              </p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
     `.trim();
 
     const autoText = [
