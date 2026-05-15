@@ -263,9 +263,6 @@ export default function GetInTouch() {
                 </div>
               )}
 
-              <p style={{ marginTop: "var(--space-2)", textAlign: "center", fontSize: 12, color: "var(--text-muted)" }}>
-                By submitting you agree to our <a href="mailto:hello@roztomilygroup.com" style={{ borderBottom: "1px solid currentColor" }}>privacy policy</a>.
-              </p>
             </form>
           )}
 
