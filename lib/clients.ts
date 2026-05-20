@@ -21,8 +21,6 @@ export const clients: Client[] = [
   { name: "Bord Bia",     src: "/roztomily/logos/BoardBia-1-300x300-transparent.png" },
   { name: "Premier Cool", src: "/roztomily/logos/Premier-5-300x300-transparent.png" },
   { name: "Joy",          src: "/roztomily/logos/Joy-1-300x300-transparent.png" },
-  { name: "Kings",        src: "/roztomily/logos/Kings-5-1-300x300-transparent.png" },
-  { name: "Mamador",      src: "/roztomily/logos/mamador-5-300x300-transparent.png" },
   { name: "Morning Fresh",src: "/roztomily/logos/morningfresh-5-300x300-transparent.png" },
   { name: "Cussons Baby", src: "/roztomily/logos/cussonbaby-5-300x300-transparent.png" },
   { name: "PZ Cussons",   src: "/roztomily/logos/pzcussons-5-300x300-transparent.png" },
