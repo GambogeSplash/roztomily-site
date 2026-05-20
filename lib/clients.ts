@@ -30,7 +30,7 @@ export const clients: Client[] = [
   { name: "Kerrygold", domain: "kerrygold.com" },
   { name: "Bet9ja",    domain: "bet9ja.com" },
   { name: "Carex",     domain: "carex.co.uk" },
-  { name: "Regal",     domain: "regalgin.com" },
+  { name: "Regal",     src: "/roztomily/logos/regal-gin-transparent.png" },
 ];
 
 export const logoUrl = (domain: string, size = 400) =>

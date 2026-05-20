@@ -487,6 +487,7 @@ img {
   align-items: center;
   gap: 9px;
   max-width: 100%;
+  margin-bottom: var(--space-8);
   padding: 4px 12px 4px 11px;
   border-radius: 10px;
   font-size: 13px;
@@ -495,16 +496,15 @@ img {
   color: var(--text-fixed-white);
   background: rgba(20, 18, 16, 0.6); /* Solid fallback when blur unsupported */
   border: 1px solid rgba(255, 255, 255, 0.24);
+  overflow: hidden;
   backdrop-filter: blur(14px) saturate(160%);
   -webkit-backdrop-filter: blur(14px) saturate(160%);
-}
-@supports ((backdrop-filter: blur(2px)) or (-webkit-backdrop-filter: blur(2px))) {
-  .series-a-banner { background: rgba(255, 255, 255, 0.14); }
-  margin-bottom: var(--space-6);
-  overflow: hidden;
   transition: background var(--motion-normal) var(--motion-easing),
               border-color var(--motion-normal) var(--motion-easing),
               transform var(--motion-fast) var(--motion-easing);
+}
+@supports ((backdrop-filter: blur(2px)) or (-webkit-backdrop-filter: blur(2px))) {
+  .series-a-banner { background: rgba(255, 255, 255, 0.14); }
 }
 .series-a-banner:hover {
   background: rgba(255, 255, 255, 0.22);
