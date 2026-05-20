@@ -419,8 +419,10 @@
 [data-theme="dark"] .logo-marquee__item:hover img,
 [data-theme="dark"] .logo-marquee__item:hover svg {
   opacity: 1;
-  filter: grayscale(0) contrast(1.05) saturate(1.15);
-  mix-blend-mode: normal;
+  /* Keep invert+screen so dark-content logos stay legible on the dark page.
+     Hover reactivity comes from opacity + scale, not a color reveal. */
+  filter: grayscale(1) invert(1) contrast(1.15);
+  mix-blend-mode: screen;
 }
 .logo-marquee__fallback {
   font-family: var(--font-extended);
