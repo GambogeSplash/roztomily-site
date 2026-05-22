@@ -1104,7 +1104,7 @@ select:-webkit-autofill {
   position: fixed;
   inset: 0;
   z-index: 80;
-  background: rgba(255, 250, 245, 0.82);
+  background: rgba(255, 250, 245, 0.97);
   backdrop-filter: saturate(140%) blur(24px);
   -webkit-backdrop-filter: saturate(140%) blur(24px);
   display: flex;
@@ -1127,8 +1127,16 @@ select:-webkit-autofill {
 }
 
 [data-theme="dark"] .mobile-drawer {
-  background: rgba(13, 10, 8, 0.82);
+  background: rgba(13, 10, 8, 0.97);
   color: var(--text-fixed-white);
+}
+
+/* Fallback for mobile browsers that don't support backdrop-filter
+   (older Android Chrome, Safari with low-power mode, etc.) — drop the
+   transparency entirely so content beneath never bleeds through. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .mobile-drawer { background: rgb(255, 250, 245); }
+  [data-theme="dark"] .mobile-drawer { background: rgb(13, 10, 8); }
 }
 
 .mobile-drawer__top {
