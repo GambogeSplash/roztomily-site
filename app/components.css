@@ -371,16 +371,17 @@
   align-items: center;
   justify-content: center;
   height: 110px;
-  width: 130px;          /* fixed slot — every logo gets the same canvas */
-  flex: 0 0 130px;
+  width: 180px;          /* fixed slot — wider so wide-format logos breathe */
+  flex: 0 0 180px;
   padding-inline: 0;
 }
 .logo-marquee__item img,
 .logo-marquee__item svg {
   /* Uniform size — every logo renders to the same height + width
-     ceiling, `object-fit: contain` preserves aspect ratio. */
-  max-height: 72px;
-  max-width: 190px;
+     ceiling, `object-fit: contain` preserves aspect ratio. The slot
+     width caps how wide a wide logo can grow before height shrinks. */
+  max-height: 60px;
+  max-width: 160px;
   width: auto;
   height: auto;
   object-fit: contain;
@@ -427,15 +428,17 @@
 }
 
 /* keepColor — logos that are already light/white. Skip the invert filter
-   entirely so the marquee doesn't flip their bright content to black. */
+   (which would flip bright content to black) but keep the grayscale +
+   dim opacity at rest so they read as gray like the other logos. Hover
+   drops grayscale to reveal the brand colors. */
 [data-theme="dark"] .logo-marquee__item[data-keep-color] img,
 [data-theme="dark"] .logo-marquee__item[data-keep-color] svg {
-  filter: contrast(1.05);
+  filter: grayscale(1) contrast(1.05);
   mix-blend-mode: normal;
 }
 [data-theme="dark"] .logo-marquee__item[data-keep-color]:hover img,
 [data-theme="dark"] .logo-marquee__item[data-keep-color]:hover svg {
-  filter: contrast(1.05) saturate(1.15);
+  filter: grayscale(0) contrast(1.05) saturate(1.15);
   mix-blend-mode: normal;
 }
 .logo-marquee__fallback {
