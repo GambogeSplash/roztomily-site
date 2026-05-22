@@ -18,18 +18,15 @@ export type Client = {
 
 export const clients: Client[] = [
   // Roztomily campaign clients — local PNGs
-  { name: "Bord Bia",     src: "/roztomily/logos/BoardBia-1-300x300-transparent.png" },
-  { name: "Premier Cool", src: "/roztomily/logos/Premier-5-300x300-transparent.png" },
-  { name: "Joy",          src: "/roztomily/logos/Joy-1-300x300-transparent.png" },
-  { name: "Morning Fresh",src: "/roztomily/logos/morningfresh-5-300x300-transparent.png" },
-  { name: "Cussons Baby", src: "/roztomily/logos/cussonbaby-5-300x300-transparent.png" },
-  { name: "PZ Cussons",   src: "/roztomily/logos/pzcussons-5-300x300-transparent.png" },
+  { name: "Bord Bia",          src: "/roztomily/logos/BoardBia-1-300x300-transparent.png" },
+  { name: "NNPC Retail",       src: "/roztomily/logos/nnpc-retail-transparent.png" },
+  { name: "AgroPartnerships",  src: "/roztomily/logos/agropartnerships-transparent.png" },
+  { name: "Drinks Fest Lagos", src: "/roztomily/logos/drinks-fest-lagos-transparent.png" },
 
   // Additional brands — resolved via logo.dev
   { name: "ValueJet",  domain: "flyvaluejet.com" },
   { name: "Kerrygold", domain: "kerrygold.com" },
   { name: "Bet9ja",    domain: "bet9ja.com" },
-  { name: "Carex",     domain: "carex.co.uk" },
   { name: "Regal",     src: "/roztomily/logos/regal-gin-transparent.png" },
 ];
 
