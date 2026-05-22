@@ -72,12 +72,21 @@ export function TrustedBy() {
           <div className="logo-marquee" aria-label="Client logos" role="region">
             <div className="logo-marquee__track">
               {sequence.map((c, i) => (
-                <div key={`a-${i}-${c.name}`} className="logo-marquee__item">
+                <div
+                  key={`a-${i}-${c.name}`}
+                  className="logo-marquee__item"
+                  data-keep-color={c.keepColor ? "true" : undefined}
+                >
                   <ClientLogo client={c} />
                 </div>
               ))}
               {sequence.map((c, i) => (
-                <div key={`b-${i}-${c.name}`} className="logo-marquee__item" aria-hidden>
+                <div
+                  key={`b-${i}-${c.name}`}
+                  className="logo-marquee__item"
+                  data-keep-color={c.keepColor ? "true" : undefined}
+                  aria-hidden
+                >
                   <ClientLogo client={c} />
                 </div>
               ))}

@@ -14,6 +14,8 @@ export type Client = {
   src?: string;
   /** Fallback brand domain — fetched via img.logo.dev when no `src` exists. */
   domain?: string;
+  /** Opt out of the dark-mode invert filter — for logos that are already light/white. */
+  keepColor?: boolean;
 };
 
 export const clients: Client[] = [
@@ -21,12 +23,12 @@ export const clients: Client[] = [
   { name: "Bord Bia",          src: "/roztomily/logos/BoardBia-1-300x300-transparent.png" },
   { name: "NNPC Retail",       src: "/roztomily/logos/nnpc-retail-transparent.png" },
   { name: "AgroPartnerships",  src: "/roztomily/logos/agropartnerships-transparent.png" },
-  { name: "Drinks Fest Lagos", src: "/roztomily/logos/drinks-fest-lagos-transparent.png" },
+  { name: "Drinks Fest Lagos", src: "/roztomily/logos/drinks-fest-lagos-transparent.png", keepColor: true },
 
   // Additional brands — resolved via logo.dev
   { name: "ValueJet",  domain: "flyvaluejet.com" },
   { name: "Kerrygold", domain: "kerrygold.com" },
-  { name: "Bet9ja",    domain: "bet9ja.com" },
+  { name: "Bet9ja",    src: "/roztomily/logos/bet9ja-transparent.png" },
   { name: "Regal",     src: "/roztomily/logos/regal-gin-transparent.png" },
 ];
 
