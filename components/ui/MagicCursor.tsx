@@ -23,7 +23,8 @@ type Kind =
   | "site"
   | "github"
   | "twitter"
-  | "call";
+  | "call"
+  | "map";
 
 const LABELS: Record<Exclude<Kind, "default">, string> = {
   "case-study": "View project",
@@ -33,6 +34,7 @@ const LABELS: Record<Exclude<Kind, "default">, string> = {
   "github":     "View code",
   "twitter":    "Follow",
   "call":       "Call",
+  "map":        "Open in Maps",
 };
 
 const ArrowIcon = (

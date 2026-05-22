@@ -201,6 +201,7 @@ export function SiteFooter() {
                   href="https://www.google.com/maps/search/?api=1&query=47+Hassan+Balogun+St%2C+Isheri+Olofin%2C+Lagos"
                   target="_blank"
                   rel="noopener noreferrer"
+                  data-cursor="map"
                   style={{
                     color: "rgba(255,255,255,0.78)",
                     lineHeight: 1.5,
