@@ -61,7 +61,7 @@ const SERVICES: Record<string, Service> = {
     title: "Media Relations & Media Buying",
     short: "Connecting brands to the right audiences.",
     body: "Powerful media relationships paired with data-driven placements across traditional and digital channels. We don't just buy media — we earn it, place it, and measure it.",
-    image: "/roztomily/services/media-relations-and-buying.png",
+    image: "/roztomily/services/media-relations-and-buying.jpg",
     features: [
       { title: "Earned media",          body: "Editor relationships across print, broadcast, and digital." },
       { title: "Paid media planning",   body: "Cost-aware buys across TV, radio, OOH, digital, and influencer." },

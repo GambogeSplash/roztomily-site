@@ -29,7 +29,7 @@ const PILLARS = [
 
 const BENTO = [
   { title: "PR & brand marketing",          body: "Narrative development and strategic communications. Help brands own their story and earn public trust.", image: "/roztomily/services/pr-and-brand-marketing.jpg",                  span: 2 },
-  { title: "Media relations & buying",      body: "Powerful media relationships paired with data-driven placements across traditional and digital.",       image: "/roztomily/services/media-relations-and-buying.png",              span: 1 },
+  { title: "Media relations & buying",      body: "Powerful media relationships paired with data-driven placements across traditional and digital.",       image: "/roztomily/services/media-relations-and-buying.jpg",              span: 1 },
   { title: "Experiential marketing",        body: "Immersive brand experiences that create emotional connection and turn audiences into communities.",      image: "/roztomily/services/experiential-marketing.jpg",                  span: 1 },
   { title: "Digital marketing",             body: "Digital ecosystems that drive visibility, engagement, and conversion across performance, content, and social.", image: "/roztomily/services/digital-marketing.jpg",                   span: 1 },
   { title: "Creative production & advertising", body: "High-impact visuals, campaigns, and storytelling that cut through noise and command attention.",     image: "/roztomily/services/creative-production-and-advertising.jpg",     span: 1 },

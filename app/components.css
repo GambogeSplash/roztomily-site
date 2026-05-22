@@ -1185,3 +1185,23 @@ select:-webkit-autofill {
 @media (prefers-reduced-motion: reduce) {
   .mobile-drawer { transition: opacity 100ms linear; transform: none; }
 }
+
+/* ─── Image fade-in ───────────────────────────────────────────────────
+   next/image swaps the blur placeholder for the sharp image instantly.
+   This adds a soft 700ms ease-out fade on first paint so the swap reads
+   as a single graceful entrance — the blur is visible the whole way
+   (it's a background on the same <img>), and the sharp version takes
+   over without snapping.
+
+   Applied to any next/image-rendered element (it sets `data-nimg`).
+   Hover transforms still flow through the existing transform transition. */
+img[data-nimg] {
+  animation: nimg-fade-in 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes nimg-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  img[data-nimg] { animation: none; }
+}
