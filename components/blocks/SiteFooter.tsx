@@ -196,9 +196,20 @@ export function SiteFooter() {
                   +234 913 918 4995
                 </a>
               </li>
-              <li style={{ color: "rgba(255,255,255,0.78)", lineHeight: 1.5 }}>
-                47 Hassan Balogun St,<br />
-                Isheri Olofin, Lagos
+              <li>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=47+Hassan+Balogun+St%2C+Isheri+Olofin%2C+Lagos"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    color: "rgba(255,255,255,0.78)",
+                    lineHeight: 1.5,
+                    borderBottom: "1px solid rgba(255,255,255,0.32)",
+                  }}
+                >
+                  47 Hassan Balogun St,<br />
+                  Isheri Olofin, Lagos
+                </a>
               </li>
             </ul>
           </div>
