@@ -192,9 +192,13 @@ export function SiteFooter() {
                 </a>
               </li>
               <li>
-                <a href="tel:+2349000000000" style={{ borderBottom: "1px solid rgba(255,255,255,0.32)" }}>
-                  +234 90 000 0000
+                <a href="tel:+2349139184995" style={{ borderBottom: "1px solid rgba(255,255,255,0.32)" }}>
+                  +234 913 918 4995
                 </a>
+              </li>
+              <li style={{ color: "rgba(255,255,255,0.78)", lineHeight: 1.5 }}>
+                47 Hassan Balogun St,<br />
+                Isheri Olofin, Lagos
               </li>
             </ul>
           </div>

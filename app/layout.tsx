@@ -94,10 +94,12 @@ const organizationLd = {
   logo: `${SITE_URL}/roztomily/logo.svg`,
   description: DESCRIPTION,
   email: "hello@roztomilygroup.com",
-  telephone: "+234-90-000-0000",
+  telephone: "+234-913-918-4995",
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Lagos",
+    streetAddress: "47 Hassan Balogun St",
+    addressLocality: "Isheri Olofin",
+    addressRegion: "Lagos",
     addressCountry: "NG",
   },
   sameAs: [
