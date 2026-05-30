@@ -4,6 +4,7 @@ import { SiteNav } from "@/components/blocks/SiteNav";
 import { SiteFooter } from "@/components/blocks/SiteFooter";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { MagicCursor } from "@/components/ui/MagicCursor";
+import { Analytics } from "@vercel/analytics/next";
 
 /* ── SEO + social metadata ────────────────────────────────────────── */
 const SITE_URL = "https://www.roztomilygroup.com";
@@ -147,6 +148,7 @@ export default function RootLayout({
         <SiteNav />
         <main>{children}</main>
         <SiteFooter />
+        <Analytics />
       </body>
     </html>
   );
