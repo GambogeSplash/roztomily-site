@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Roztomily — Letterhead</title>
+<style>
+  :root{
+    --red:#dc2c25; --ink:#160f0c; --muted:#898683; --soft:#4d4846; --cream:#edece7;
+  }
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html,body { margin:0; padding:0; background:#cfcfcf; }
+  body { font-family: Arial, Helvetica, sans-serif; color: var(--ink); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  .sheet{
+    position: relative;
+    width: 210mm; min-height: 297mm;
+    margin: 24px auto;
+    background:#fff;
+    padding: 26mm 22mm 30mm;
+    box-shadow: 0 4px 24px rgba(0,0,0,.18);
+  }
+
+  /* thin red rule down the left edge of the sheet */
+  .sheet::before{
+    content:""; position:absolute; top:0; left:0; bottom:0; width:6px; background:var(--red);
+  }
+
+  header{ display:flex; justify-content:space-between; align-items:flex-start; padding-bottom:18px; border-bottom:2px solid var(--red); }
+  .brand img{ display:block; width:84px; height:auto; }
+  .contact{ text-align:right; font-size:10.5px; line-height:17px; color:var(--soft); }
+  .contact a{ color:var(--soft); text-decoration:none; }
+  .contact .web{ color:var(--red); font-weight:bold; }
+
+  .body{ padding-top:26px; font-size:12.5px; line-height:21px; color:var(--ink); }
+  .meta{ color:var(--muted); font-size:11.5px; margin-bottom:26px; }
+
+  /* sample copy — delete when using as a template */
+  .sample p{ margin:0 0 13px; }
+
+  footer{
+    position:absolute; left:22mm; right:22mm; bottom:16mm;
+    border-top:1px solid rgba(0,0,0,.12); padding-top:9px;
+    font-size:9.5px; line-height:15px; color:var(--muted);
+    display:flex; justify-content:space-between; align-items:flex-end;
+  }
+  footer .legal{ max-width:62%; }
+  footer .mark{ font-weight:bold; color:var(--red); letter-spacing:1px; font-size:11px; text-transform:uppercase; }
+
+  @media print{
+    html,body{ background:#fff; }
+    .sheet{ margin:0; box-shadow:none; width:auto; min-height:auto; }
+  }
+</style>
+</head>
+<body>
+  <div class="sheet">
+
+    <header>
+      <div class="brand">
+        <img src="https://www.roztomilygroup.com/roztomily/logo.png" alt="Roztomily">
+      </div>
+      <div class="contact">
+        47 Hassan Balogun St, Isheri Olofin, Lagos<br>
+        <a href="tel:+2349139184995">+234 913 918 4995</a><br>
+        <a href="mailto:hello@roztomilygroup.com">hello@roztomilygroup.com</a><br>
+        <span class="web">www.roztomilygroup.com</span>
+      </div>
+    </header>
+
+    <div class="body">
+      <div class="meta">3 June 2026</div>
+
+      <!-- ===== Replace everything inside .sample with your letter ===== -->
+      <div class="sample">
+        <p>Recipient Name<br>Company / Organisation<br>Address line</p>
+        <p>Dear [Name],</p>
+        <p>This is a letterhead template. Replace this block with the body of your letter. Keep paragraphs in this same font and size for a clean, consistent house style. The red rule, logo, and footer print automatically on every page.</p>
+        <p>To use it: open this file in your browser, replace this text, then print to PDF (Cmd/Ctrl + P &rarr; Save as PDF, paper size A4, margins set to None / Default). You can also paste the body text into Google Docs or Word if you prefer, using the same header and footer.</p>
+        <p>Warm regards,</p>
+        <p style="margin-top:30px;"><strong>Your Name</strong><br>Title, Roztomily</p>
+      </div>
+      <!-- ===== End replaceable block ===== -->
+    </div>
+
+    <footer>
+      <div class="legal">
+        Roztomily Limited &middot; Public Relations &amp; Integrated Marketing Communications &middot; Lagos, Nigeria
+      </div>
+      <div class="mark">Roztomily</div>
+    </footer>
+
+  </div>
+</body>
+</html>
