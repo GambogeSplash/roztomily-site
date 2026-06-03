@@ -164,31 +164,31 @@ Looks and behaves like Gmail. Instant delivery. Nothing to configure.
 
 | | Server | Port | Security |
 |---|---|---|---|
-| Incoming (IMAP) | `imap.zoho.com` | 993 | SSL/TLS |
-| Outgoing (SMTP) | `smtp.zoho.com` | 465 | SSL/TLS |
+| Incoming (IMAP) | `imappro.zoho.com` | 993 | SSL/TLS |
+| Outgoing (SMTP) | `smtppro.zoho.com` | 465 | SSL/TLS |
 | Username | the full address, e.g. `hello@roztomilygroup.com` | | |
 | Password | mailbox password (or app password if 2FA) | | |
 
-> Non-`.com` data centre? Use `imap.zoho.eu` / `smtp.zoho.eu` etc. — match Zoho's console.
+> Non-`.com` data centre? Use `imappro.zoho.eu` / `smtppro.zoho.eu` etc. — match Zoho's console.
 
 **B1 — Android Gmail app (true IMAP, recommended for the Gmail crowd):**
 Gmail app → tap avatar → **Add another account** → **Other** → enter the address →
-**Personal (IMAP)** → password → fill incoming `imap.zoho.com` 993 SSL + outgoing
-`smtp.zoho.com` 465 SSL → Done. The Zoho box shows as its own inbox in the Gmail app.
+**Personal (IMAP)** → password → fill incoming `imappro.zoho.com` 993 SSL + outgoing
+`smtppro.zoho.com` 465 SSL → Done. The Zoho box shows as its own inbox in the Gmail app.
 
 **B2 — Apple Mail (iPhone / Mac):**
 Settings → **Mail → Accounts → Add Account → Other → Add Mail Account** → fill the address +
-password → choose **IMAP** → incoming `imap.zoho.com`, outgoing `smtp.zoho.com` → Save.
+password → choose **IMAP** → incoming `imappro.zoho.com`, outgoing `smtppro.zoho.com` → Save.
 
 **B3 — Pull into an existing Gmail *web* inbox (everything in one Gmail):**
 This is the "import into my Gmail" method. Gmail web only fetches external mail by **POP3**,
 so receiving lags (Gmail polls periodically).
 1. **Receive:** Gmail → **Settings (gear) → See all settings → Accounts and Import →
    Check mail from other accounts → Add a mail account** → enter the address →
-   **Import emails from my other account (POP3)** → POP server `pop.zoho.com`, port **995**,
+   **Import emails from my other account (POP3)** → POP server `poppro.zoho.com`, port **995**,
    **SSL on**, username = full address, password.
 2. **Send-as:** same screen → **Send mail as → Add another email address** → name +
-   address → SMTP server `smtp.zoho.com`, port **465**, **SSL**, username = full address,
+   address → SMTP server `smtppro.zoho.com`, port **465**, **SSL**, username = full address,
    password → verify the confirmation mail.
 
 > Trade-off reminder: B3 (Gmail-web POP3 import) is the slowest to receive and the
