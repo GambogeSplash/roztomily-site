@@ -5,19 +5,19 @@ import { Resend } from "resend";
 /**
  * Contact form server action.
  *
- * Sends an email to hello@roztomilygroup.com with the form contents.
+ * Sends an email to info@roztomilygroup.com with the form contents.
  * The Reply-To header is set to the client's email so hitting "Reply" in
  * your inbox sends a response directly to them.
  *
  * Requires environment variables:
  *   RESEND_API_KEY        — secret key from https://resend.com/api-keys
- *   CONTACT_TO_EMAIL      — destination inbox (defaults to hello@roztomilygroup.com)
+ *   CONTACT_TO_EMAIL      — destination inbox (defaults to info@roztomilygroup.com)
  *   CONTACT_FROM_EMAIL    — sender (must be a Resend-verified domain;
- *                           defaults to hello@roztomilygroup.com once DNS is configured)
+ *                           defaults to info@roztomilygroup.com once DNS is configured)
  */
 
-const TO   = process.env.CONTACT_TO_EMAIL   ?? "hello@roztomilygroup.com";
-const FROM = process.env.CONTACT_FROM_EMAIL ?? "Roztomily <hello@roztomilygroup.com>";
+const TO   = process.env.CONTACT_TO_EMAIL   ?? "info@roztomilygroup.com";
+const FROM = process.env.CONTACT_FROM_EMAIL ?? "Roztomily <info@roztomilygroup.com>";
 
 export type EnquiryResult = { ok: true } | { ok: false; error: string };
 
@@ -47,7 +47,7 @@ export async function sendEnquiry(formData: FormData): Promise<EnquiryResult> {
   if (!process.env.RESEND_API_KEY) {
     return {
       ok: false,
-      error: "Email service is not configured yet. Please email us directly at hello@roztomilygroup.com.",
+      error: "Email service is not configured yet. Please email us directly at info@roztomilygroup.com.",
     };
   }
 

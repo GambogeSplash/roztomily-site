@@ -254,7 +254,7 @@ export default function GetInTouch() {
                   <span style={{ color: "var(--text-warm)" }}>{errorMsg}</span>
                   <div style={{ marginTop: 8 }}>
                     <a
-                      href="mailto:hello@roztomilygroup.com?subject=Project%20enquiry"
+                      href="mailto:info@roztomilygroup.com?subject=Project%20enquiry"
                       style={{ color: "var(--bg-teal)", borderBottom: "1px solid currentColor", fontSize: 13 }}
                     >
                       Email us directly →

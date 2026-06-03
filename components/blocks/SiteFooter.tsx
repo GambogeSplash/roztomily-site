@@ -11,7 +11,7 @@ const SOCIALS: Social[] = [
   { label: "Instagram", href: "https://instagram.com/roztomily",       icon: "instagram" },
   { label: "LinkedIn",  href: "https://linkedin.com/company/roztomily", icon: "linkedin"  },
   { label: "X",         href: "https://x.com/roztomily",               icon: "x"         },
-  { label: "Email",     href: "mailto:hello@roztomilygroup.com",       icon: "email"     },
+  { label: "Email",     href: "mailto:info@roztomilygroup.com",        icon: "email"     },
 ];
 
 function Icon({ kind }: { kind: Social["icon"] }) {
@@ -187,13 +187,13 @@ export function SiteFooter() {
             </h4>
             <ul style={{ display: "grid", gap: 10, fontSize: 14, color: "rgba(255,255,255,0.92)" }}>
               <li>
-                <a href="mailto:hello@roztomilygroup.com" style={{ borderBottom: "1px solid rgba(255,255,255,0.32)" }}>
-                  hello@roztomilygroup.com
+                <a href="mailto:info@roztomilygroup.com" style={{ borderBottom: "1px solid rgba(255,255,255,0.32)" }}>
+                  info@roztomilygroup.com
                 </a>
               </li>
               <li>
-                <a href="tel:+2349139184995" style={{ borderBottom: "1px solid rgba(255,255,255,0.32)" }}>
-                  +234 913 918 4995
+                <a href="tel:+2349039652620" style={{ borderBottom: "1px solid rgba(255,255,255,0.32)" }}>
+                  +234 903 965 2620
                 </a>
               </li>
               <li>

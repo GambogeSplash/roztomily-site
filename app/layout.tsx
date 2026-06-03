@@ -93,8 +93,8 @@ const organizationLd = {
   url: SITE_URL,
   logo: `${SITE_URL}/roztomily/logo.svg`,
   description: DESCRIPTION,
-  email: "hello@roztomilygroup.com",
-  telephone: "+234-913-918-4995",
+  email: "info@roztomilygroup.com",
+  telephone: "+234-903-965-2620",
   address: {
     "@type": "PostalAddress",
     streetAddress: "47 Hassan Balogun St",
