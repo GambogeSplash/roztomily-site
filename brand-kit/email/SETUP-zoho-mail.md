@@ -99,6 +99,32 @@ isn't easily spoofed. Start in monitor mode:
 
 (After a couple of weeks of clean reports you can tighten `p=none` → `p=quarantine`.)
 
+### Optional: script the Cloudflare side instead of clicking
+
+`brand-kit/email/roztomily-dns.sh` does Steps 2–5 via the Cloudflare API so you don't
+hand-edit records. It runs **dry-run by default**, has hard guards that refuse to touch
+the `send.*` / `resend._domainkey` (Resend) records, and splits into the two real phases.
+
+```bash
+export CF_API_TOKEN=...        # token scoped to roztomilygroup.com: Zone>DNS>Edit + Zone>Email Routing>Edit
+cd brand-kit/email
+
+./roztomily-dns.sh status                              # read-only: what's there now
+
+export ZOHO_VERIFICATION_TXT='zoho-verification=zb….zmverify.zoho.com'
+./roztomily-dns.sh verify                              # dry run
+./roztomily-dns.sh verify  --apply                    # add the verify TXT
+#   → go to Zoho, click Verify, create hello@ + info@ mailboxes
+
+export ZOHO_DKIM_VALUE='v=DKIM1; k=rsa; p=…'           # from Zoho's DKIM screen
+./roztomily-dns.sh cutover                             # dry run — review the full plan
+./roztomily-dns.sh cutover --apply                    # disable routing, swap MX, SPF, DKIM, DMARC
+
+./roztomily-dns.sh check                              # dig to confirm propagation
+```
+
+If Zoho put you in a non-`.com` data centre, prefix with `ZOHO_DC=eu` (or `in`, etc.).
+
 ## Step 6 — Verify it works
 
 - DNS can take 5–30 min (Cloudflare is usually minutes).
