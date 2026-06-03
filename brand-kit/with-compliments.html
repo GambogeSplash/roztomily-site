@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Roztomily · With Compliments</title>
+<!--
+  WITH COMPLIMENTS SLIP — DL landscape, 210mm x 99mm.
+  Open in a browser, Print (Cmd/Ctrl + P) -> Save as PDF, margins None.
+  Leave the centre clear for a short handwritten note.
+-->
+<style>
+  :root{
+    --red:#dc2c25; --ink:#160f0c; --muted:#898683; --soft:#4d4846; --cream:#edece7;
+  }
+  @page { size: 210mm 99mm; margin: 0; }
+  * { box-sizing: border-box; }
+  html,body { margin:0; padding:0; background:#cfcfcf; }
+  body{
+    font-family: Arial, Helvetica, sans-serif; color:var(--ink);
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+
+  .stage{ padding:40px 0 80px; }
+
+  .slip{
+    position:relative;
+    width:210mm; height:99mm;
+    margin:0 auto;
+    background:#fff;
+    padding:14mm 18mm 12mm;
+    box-shadow:0 4px 24px rgba(0,0,0,.18);
+    display:flex; flex-direction:column;
+  }
+  .slip::before{ content:""; position:absolute; top:0; left:0; bottom:0; width:6px; background:var(--red); }
+
+  .top{ display:flex; justify-content:space-between; align-items:flex-start; }
+  .logo img{ display:block; width:34mm; height:auto; }
+  .phrase{ font-size:15px; color:var(--red); font-weight:bold; letter-spacing:.3px; padding-top:6px; }
+
+  /* note area, faint baseline rules to write on */
+  .note{ flex:1; margin-top:7mm; }
+  .note .rule{ border-bottom:1px solid rgba(0,0,0,.08); height:10mm; }
+
+  .foot{
+    border-top:1px solid rgba(0,0,0,.12); padding-top:8px;
+    font-size:9.5px; line-height:15px; color:var(--muted);
+    display:flex; justify-content:space-between; align-items:flex-end;
+  }
+  .foot a{ color:var(--muted); text-decoration:none; }
+  .foot .web{ color:var(--red); font-weight:bold; }
+
+  @media print{
+    html,body{ background:#fff; }
+    .stage{ padding:0; }
+    .slip{ margin:0; box-shadow:none; }
+  }
+</style>
+</head>
+<body>
+  <div class="stage">
+    <div class="slip">
+
+      <div class="top">
+        <div class="logo">
+          <img src="https://www.roztomilygroup.com/roztomily/logo.png" alt="Roztomily">
+        </div>
+        <div class="phrase">With compliments</div>
+      </div>
+
+      <div class="note">
+        <div class="rule"></div>
+        <div class="rule"></div>
+      </div>
+
+      <div class="foot">
+        <div>
+          47 Hassan Balogun St, Isheri Olofin, Lagos
+          &nbsp;&middot;&nbsp;
+          <a href="tel:+2349139184995">+234 913 918 4995</a>
+          &nbsp;&middot;&nbsp;
+          <a href="mailto:hello@roztomilygroup.com">hello@roztomilygroup.com</a>
+        </div>
+        <div class="web">www.roztomilygroup.com</div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

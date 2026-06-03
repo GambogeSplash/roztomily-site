@@ -1,0 +1,48 @@
+<!--
+  ROZTOMILY NEWSLETTER / EMAIL HEADER · 600px banner block
+  ----------------------------------------------------------
+  Drop this at the top of a branded email or newsletter. It is table-based with
+  inline styles only, so it renders in Gmail, Outlook, Apple Mail, and Zoho.
+  The logo loads live from roztomilygroup.com, so nothing needs attaching.
+
+  The logo sits in a white chip because email clients do not support CSS image
+  filters (so we cannot recolour the logo white on the fly). The white chip keeps
+  the dark wordmark readable on the brand-red bar in every client.
+
+  HOW TO USE:
+  - Open this file in a browser to preview.
+  - Copy the <table>...</table> block below and paste it as the first row of
+    your email's HTML body (in Zoho/Outlook source view, or your ESP's HTML block).
+  - Put your newsletter content underneath it inside the same 600px container.
+-->
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" align="center" style="border-collapse:collapse;width:600px;max-width:600px;font-family:Arial,Helvetica,sans-serif;background:#dc2c25;">
+  <tr>
+    <td style="padding:24px 32px 22px 32px;background:#dc2c25;">
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+        <tr>
+          <td valign="middle" style="padding:0;">
+            <!-- white chip keeps the colour logo legible on the red bar -->
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;background:#ffffff;border-radius:8px;">
+              <tr>
+                <td style="padding:10px 16px;">
+                  <a href="https://www.roztomilygroup.com" style="text-decoration:none;">
+                    <img src="https://www.roztomilygroup.com/roztomily/logo.png" alt="Roztomily" width="120" style="display:block;border:0;outline:none;width:120px;height:auto;">
+                  </a>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:16px 0 0 0;font-size:12px;line-height:18px;color:#ffffff;font-family:Arial,Helvetica,sans-serif;letter-spacing:0.3px;">
+            Public Relations &amp; Integrated Marketing Communications &middot; Lagos, Nigeria
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <!-- thin deeper-red rule to seal the bar against the body content -->
+  <tr>
+    <td style="height:3px;line-height:3px;font-size:0;background:#b41c16;">&nbsp;</td>
+  </tr>
+</table>

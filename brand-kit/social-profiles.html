@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Roztomily · Social Profile Specs</title>
+<!--
+  SOCIAL PROFILE SPECS — on-screen reference only (not for print).
+  These show the brand treatment at the correct aspect ratio. Recreate each at
+  the exact export size noted in the caption and save as PNG. The R mark and
+  wordmark load live from roztomilygroup.com.
+-->
+<style>
+  :root{
+    --red:#dc2c25; --red-deep:#b41c16; --ink:#160f0c; --muted:#898683;
+    --soft:#4d4846; --cream:#edece7; --warm:#f7f7f5;
+  }
+  * { box-sizing:border-box; }
+  body{ margin:0; background:#edece7; font-family:Arial,Helvetica,sans-serif; color:#160f0c; }
+  .wrap{ max-width:860px; margin:0 auto; padding:40px 24px 80px; }
+  h1{ font-size:22px; margin:0 0 4px; }
+  .sub{ color:#4d4846; font-size:13px; margin:0 0 32px; }
+
+  .spec{ background:#fff; border-radius:12px; padding:24px; margin:0 0 22px; box-shadow:0 1px 2px rgba(0,0,0,.06); }
+  .spec .label{ font-size:11px; text-transform:uppercase; letter-spacing:1.2px; color:#dc2c25; font-weight:bold; margin:0 0 4px; }
+  .spec .px{ font-size:12px; color:#898683; margin:0 0 16px; }
+  .spec .note{ font-size:12px; color:#4d4846; margin:14px 0 0; }
+
+  /* ---- square avatar: diamond R on red ---- */
+  .avatar{
+    width:200px; height:200px; border-radius:50%; overflow:hidden;
+    background:var(--red); display:flex; align-items:center; justify-content:center;
+    box-shadow:0 1px 3px rgba(0,0,0,.18);
+  }
+  .avatar .diamond{
+    width:96px; height:96px; background:#fff; transform:rotate(45deg);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .avatar .diamond span{
+    transform:rotate(-45deg);
+    font-size:54px; font-weight:bold; color:var(--red); line-height:1;
+    font-family:Arial,Helvetica,sans-serif;
+  }
+
+  /* ---- banner shells, scaled to 800px wide preview ---- */
+  /* LinkedIn 1584x396 -> ratio 4:1 */
+  .linkedin{
+    width:100%; aspect-ratio:1584 / 396; background:var(--red);
+    position:relative; overflow:hidden; border-radius:6px;
+    display:flex; align-items:center; padding:0 6%;
+  }
+  .linkedin::before{ content:""; position:absolute; top:0; left:0; bottom:0; width:10px; background:var(--red-deep); }
+  .linkedin img{ width:26%; height:auto; filter:brightness(0) invert(1); display:block; }
+  .linkedin .tag{ position:absolute; right:6%; bottom:14%; color:rgba(255,255,255,.9); font-size:13px; letter-spacing:.3px; }
+
+  /* X / Twitter 1500x500 -> ratio 3:1 */
+  .twitter{
+    width:100%; aspect-ratio:1500 / 500; background:var(--ink);
+    position:relative; overflow:hidden; border-radius:6px;
+    display:flex; align-items:center; justify-content:center; flex-direction:column;
+  }
+  .twitter::before{ content:""; position:absolute; top:0; left:0; right:0; height:10px; background:var(--red); }
+  .twitter img{ width:24%; height:auto; filter:brightness(0) invert(1); display:block; }
+  .twitter .tag{ color:rgba(255,255,255,.78); font-size:13px; margin-top:14px; letter-spacing:.3px; }
+
+  .palette{ display:flex; gap:8px; margin-top:10px; flex-wrap:wrap; }
+  .sw{ width:54px; height:54px; border-radius:8px; box-shadow:inset 0 0 0 1px rgba(0,0,0,.06); }
+  .sw small{ display:block; margin-top:58px; font-size:10px; color:#898683; text-align:center; width:54px; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Roztomily · Social Profile Specs</h1>
+    <p class="sub">Visual specs for the social accounts. Recreate each at the exact pixel size noted, then export as PNG. Screen reference only; these do not need to print.</p>
+
+    <div class="spec">
+      <p class="label">Profile avatar (square)</p>
+      <p class="px">Export 1000 &times; 1000 px PNG. Most platforms crop it to a circle, so keep the diamond centred.</p>
+      <div class="avatar">
+        <div class="diamond"><span>R</span></div>
+      </div>
+      <p class="note">Diamond R mark, brand red field. Use the white-on-red lockup. Keep clear space equal to roughly a quarter of the mark on every side.</p>
+    </div>
+
+    <div class="spec">
+      <p class="label">LinkedIn banner</p>
+      <p class="px">Export 1584 &times; 396 px PNG (4:1). On a company page the logo and name sit lower-left, so keep important detail clear of that corner.</p>
+      <div class="linkedin">
+        <img src="https://www.roztomilygroup.com/roztomily/logo.png" alt="Roztomily">
+        <div class="tag">Public Relations &amp; IMC &middot; Lagos</div>
+      </div>
+      <p class="note">Brand red field, deep-red left spine echoing the letterhead. White wordmark.</p>
+    </div>
+
+    <div class="spec">
+      <p class="label">X / Twitter header</p>
+      <p class="px">Export 1500 &times; 500 px PNG (3:1). The avatar overlaps the lower-left, so centre the wordmark and leave that corner clear.</p>
+      <div class="twitter">
+        <img src="https://www.roztomilygroup.com/roztomily/logo.png" alt="Roztomily">
+        <div class="tag">www.roztomilygroup.com</div>
+      </div>
+      <p class="note">Ink field with a red top rule, white wordmark centred. The ink variant gives contrast against the red avatar that sits in front of it.</p>
+    </div>
+
+    <div class="spec">
+      <p class="label">Palette reference</p>
+      <p class="px">Exact values used across the kit.</p>
+      <div class="palette">
+        <div><div class="sw" style="background:#dc2c25;"></div><small>#dc2c25</small></div>
+        <div><div class="sw" style="background:#b41c16;"></div><small>#b41c16</small></div>
+        <div><div class="sw" style="background:#160f0c;"></div><small>#160f0c</small></div>
+        <div><div class="sw" style="background:#edece7;"></div><small>#edece7</small></div>
+        <div><div class="sw" style="background:#f5b942;"></div><small>#f5b942</small></div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

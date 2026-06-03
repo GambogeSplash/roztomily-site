@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Roztomily · Business Card</title>
+<!--
+  BUSINESS CARD · standard 85mm x 55mm.
+  Both sides are shown on screen. Replace [Full Name] / [Title] on the front.
+
+  PRINT / EXPORT:
+  - Open in a browser, Print (Cmd/Ctrl + P) then Save as PDF.
+  - For a real print shop, add 3mm bleed on each side (final 91mm x 61mm)
+    and keep all text inside the safe area shown by the dotted guide.
+  - The dotted line is the crop/safe guide only; it does not print on PDF
+    export. Hand the shop the front and back as separate pages.
+-->
+<style>
+  :root{
+    --red:#dc2c25; --red-deep:#b41c16; --ink:#160f0c; --muted:#898683;
+    --soft:#4d4846; --cream:#edece7; --warm:#f7f7f5;
+  }
+  @page { size: 85mm 55mm; margin: 0; }
+  * { box-sizing: border-box; }
+  html,body { margin:0; padding:0; background:#cfcfcf; }
+  body{
+    font-family: Arial, Helvetica, sans-serif; color:var(--ink);
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+
+  .stage{ padding:40px 24px 80px; display:flex; flex-wrap:wrap; gap:32px; justify-content:center; }
+  .stage h1{ width:100%; text-align:center; font-size:18px; margin:0 0 4px; }
+  .stage .lead{ width:100%; text-align:center; color:var(--soft); font-size:13px; margin:0 0 14px; }
+
+  .card{
+    position:relative;
+    width:85mm; height:55mm;
+    background:#fff;
+    box-shadow:0 4px 24px rgba(0,0,0,.18);
+    overflow:hidden;
+  }
+
+  /* dotted safe-area guide (screen only) */
+  .card::after{
+    content:""; position:absolute; inset:4mm; border:1px dotted rgba(0,0,0,.18);
+    pointer-events:none;
+  }
+
+  /* ---------- FRONT ---------- */
+  .front{ padding:6mm 7mm; display:flex; flex-direction:column; justify-content:space-between; }
+  .front::before{ content:""; position:absolute; top:0; left:0; bottom:0; width:5px; background:var(--red); }
+  .front .logo img{ display:block; width:26mm; height:auto; }
+  .front .person .name{ font-size:12px; font-weight:bold; color:var(--ink); letter-spacing:.2px; }
+  .front .person .title{ font-size:9.5px; color:var(--muted); margin-top:1px; }
+  .front .person .lines{ font-size:9px; line-height:15px; color:var(--soft); margin-top:6px; }
+  .front .person a{ color:var(--soft); text-decoration:none; }
+
+  /* ---------- BACK ---------- */
+  .back{ background:var(--red); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:6mm; }
+  .back::before{ content:""; position:absolute; top:0; left:0; bottom:0; width:5px; background:var(--red-deep); }
+  .back::after{ border-color:rgba(255,255,255,.28); }
+  .back .wordmark img{
+    display:block; width:34mm; height:auto;
+    /* logo is dark on transparent; render it white on the red field */
+    filter:brightness(0) invert(1);
+  }
+  .back .web{ color:#fff; font-size:9.5px; font-weight:bold; letter-spacing:.4px; margin-top:8px; }
+  .back .addr{ color:rgba(255,255,255,.82); font-size:8px; line-height:13px; margin-top:4px; }
+
+  @media print{
+    html,body{ background:#fff; }
+    .stage{ padding:0; gap:0; }
+    .stage h1, .stage .lead{ display:none; }
+    .card{ box-shadow:none; page-break-after:always; }
+    .card::after{ display:none; }
+  }
+</style>
+</head>
+<body>
+  <div class="stage">
+    <h1>Roztomily · Business Card</h1>
+    <p class="lead">85mm &times; 55mm. Front and back shown below. The dotted line is the safe area; it does not print.</p>
+
+    <!-- FRONT -->
+    <div class="card front">
+      <div class="logo">
+        <img src="https://www.roztomilygroup.com/roztomily/logo.png" alt="Roztomily">
+      </div>
+      <div class="person">
+        <div class="name">[Full Name]</div>
+        <div class="title">[Title]</div>
+        <div class="lines">
+          <a href="tel:+2349139184995">+234 913 918 4995</a><br>
+          <a href="mailto:hello@roztomilygroup.com">hello@roztomilygroup.com</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- BACK -->
+    <div class="card back">
+      <div class="wordmark">
+        <img src="https://www.roztomilygroup.com/roztomily/logo.png" alt="Roztomily">
+      </div>
+      <div class="web">www.roztomilygroup.com</div>
+      <div class="addr">47 Hassan Balogun St, Isheri Olofin, Lagos</div>
+    </div>
+  </div>
+</body>
+</html>

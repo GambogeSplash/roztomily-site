@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Roztomily · Invoice</title>
+<!--
+  INVOICE / QUOTE — A4 template.
+  Replace [Invoice #], [Date], [Due date], [Client], the line items, and the
+  payment placeholders. For a quote, change the "INVOICE" label to "QUOTE" and
+  the "Due" line to "Valid until".
+  Open in a browser, Print (Cmd/Ctrl + P) -> Save as PDF, A4, margins None.
+-->
+<style>
+  :root{
+    --red:#dc2c25; --red-deep:#b41c16; --ink:#160f0c; --muted:#898683;
+    --soft:#4d4846; --cream:#edece7; --warm:#f7f7f5;
+  }
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html,body { margin:0; padding:0; background:#cfcfcf; }
+  body{
+    font-family: Arial, Helvetica, sans-serif; color:var(--ink);
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+
+  .sheet{
+    position:relative;
+    width:210mm; min-height:297mm;
+    margin:24px auto;
+    background:#fff;
+    padding:24mm 22mm 30mm;
+    box-shadow:0 4px 24px rgba(0,0,0,.18);
+  }
+  .sheet::before{ content:""; position:absolute; top:0; left:0; bottom:0; width:6px; background:var(--red); }
+
+  header{ display:flex; justify-content:space-between; align-items:flex-start; padding-bottom:18px; border-bottom:2px solid var(--red); }
+  .brand img{ display:block; width:78px; height:auto; }
+  .doc{ text-align:right; }
+  .doc .label{ font-size:22px; font-weight:bold; letter-spacing:3px; color:#000; text-transform:uppercase; }
+  .doc .meta{ font-size:11px; line-height:18px; color:var(--soft); margin-top:8px; }
+  .doc .meta strong{ color:var(--ink); }
+
+  .parties{ display:flex; justify-content:space-between; gap:24px; padding-top:24px; }
+  .parties h3{ font-size:10px; text-transform:uppercase; letter-spacing:1.2px; color:var(--red); margin:0 0 7px; }
+  .parties .who{ font-size:12px; line-height:19px; color:var(--ink); }
+  .parties .who .muted{ color:var(--muted); }
+
+  table.items{ width:100%; border-collapse:collapse; margin-top:26px; }
+  table.items thead th{
+    text-align:left; font-size:10px; text-transform:uppercase; letter-spacing:1px;
+    color:#fff; background:var(--red); padding:9px 12px; font-weight:bold;
+  }
+  table.items thead th.num{ text-align:right; }
+  table.items tbody td{ font-size:12px; line-height:19px; color:var(--ink); padding:11px 12px; border-bottom:1px solid rgba(0,0,0,.10); }
+  table.items tbody td.desc .muted{ color:var(--muted); font-size:11px; display:block; }
+  table.items tbody td.num{ text-align:right; white-space:nowrap; }
+  table.items tbody tr:nth-child(even) td{ background:var(--warm); }
+
+  .totals{ width:46%; margin-left:auto; margin-top:14px; }
+  .totals .row{ display:flex; justify-content:space-between; font-size:12px; padding:7px 12px; color:var(--soft); }
+  .totals .row.grand{
+    font-size:14px; font-weight:bold; color:#000;
+    border-top:2px solid var(--red); margin-top:4px; padding-top:11px;
+  }
+  .totals .row.grand .amt{ color:var(--red); }
+
+  .pay{ margin-top:28px; padding:16px 18px; background:var(--cream); }
+  .pay h3{ font-size:10px; text-transform:uppercase; letter-spacing:1.2px; color:var(--red); margin:0 0 9px; }
+  .pay .grid{ font-size:11.5px; line-height:20px; color:var(--ink); }
+  .pay .grid .k{ color:var(--muted); display:inline-block; width:130px; }
+  .pay .note{ font-size:11px; color:var(--soft); margin-top:10px; }
+
+  footer{
+    position:absolute; left:22mm; right:22mm; bottom:16mm;
+    border-top:1px solid rgba(0,0,0,.12); padding-top:9px;
+    font-size:9.5px; line-height:15px; color:var(--muted);
+    display:flex; justify-content:space-between; align-items:flex-end;
+  }
+  footer .legal{ max-width:62%; }
+  footer .mark{ font-weight:bold; color:var(--red); letter-spacing:1px; font-size:11px; text-transform:uppercase; }
+
+  @media print{
+    html,body{ background:#fff; }
+    .sheet{ margin:0; box-shadow:none; width:auto; min-height:auto; }
+  }
+</style>
+</head>
+<body>
+  <div class="sheet">
+
+    <header>
+      <div class="brand">
+        <img src="https://www.roztomilygroup.com/roztomily/logo.png" alt="Roztomily">
+      </div>
+      <div class="doc">
+        <div class="label">Invoice</div>
+        <div class="meta">
+          <strong>Invoice #:</strong> [Invoice #]<br>
+          <strong>Date:</strong> [Date]<br>
+          <strong>Due:</strong> [Due date]
+        </div>
+      </div>
+    </header>
+
+    <div class="parties">
+      <div>
+        <h3>Bill to</h3>
+        <div class="who">
+          [Client]<br>
+          <span class="muted">[Contact name]</span><br>
+          <span class="muted">[Address line]</span><br>
+          <span class="muted">[Email]</span>
+        </div>
+      </div>
+      <div>
+        <h3>From</h3>
+        <div class="who">
+          Roztomily Limited<br>
+          <span class="muted">47 Hassan Balogun St,<br>Isheri Olofin, Lagos</span><br>
+          <span class="muted">hello@roztomilygroup.com</span>
+        </div>
+      </div>
+    </div>
+
+    <table class="items">
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th class="num">Qty</th>
+          <th class="num">Rate</th>
+          <th class="num">Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="desc">[Service / deliverable]<span class="muted">[Short note on scope]</span></td>
+          <td class="num">[Qty]</td>
+          <td class="num">[Rate]</td>
+          <td class="num">[Amount]</td>
+        </tr>
+        <tr>
+          <td class="desc">[Service / deliverable]<span class="muted">[Short note on scope]</span></td>
+          <td class="num">[Qty]</td>
+          <td class="num">[Rate]</td>
+          <td class="num">[Amount]</td>
+        </tr>
+        <tr>
+          <td class="desc">[Service / deliverable]<span class="muted">[Short note on scope]</span></td>
+          <td class="num">[Qty]</td>
+          <td class="num">[Rate]</td>
+          <td class="num">[Amount]</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="totals">
+      <div class="row"><span>Subtotal</span><span class="amt">[Amount]</span></div>
+      <div class="row"><span>VAT [rate]</span><span class="amt">[Amount]</span></div>
+      <div class="row grand"><span>Total due</span><span class="amt">[Amount]</span></div>
+    </div>
+
+    <div class="pay">
+      <h3>Payment details</h3>
+      <div class="grid">
+        <div><span class="k">Bank</span>[Bank]</div>
+        <div><span class="k">Account name</span>[Account name]</div>
+        <div><span class="k">Account number</span>[Account number]</div>
+      </div>
+      <p class="note">Please quote invoice [Invoice #] on your transfer. Payment is due by [Due date].</p>
+    </div>
+
+    <footer>
+      <div class="legal">
+        Roztomily Limited &middot; Public Relations &amp; Integrated Marketing Communications &middot; Lagos, Nigeria
+      </div>
+      <div class="mark">Roztomily</div>
+    </footer>
+
+  </div>
+</body>
+</html>

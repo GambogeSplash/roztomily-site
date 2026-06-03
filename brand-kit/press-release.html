@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Roztomily · Press Release</title>
+<!--
+  PRESS RELEASE — A4 template.
+  Replace [HEADLINE], [Subhead], the dateline date, the body paragraphs,
+  and the media-contact name/title. Do not invent facts; fill only what is true.
+  Open in a browser, Print (Cmd/Ctrl + P) -> Save as PDF, A4, margins None.
+-->
+<style>
+  :root{
+    --red:#dc2c25; --ink:#160f0c; --muted:#898683; --soft:#4d4846; --cream:#edece7;
+  }
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html,body { margin:0; padding:0; background:#cfcfcf; }
+  body{
+    font-family: Arial, Helvetica, sans-serif; color:var(--ink);
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+
+  .sheet{
+    position:relative;
+    width:210mm; min-height:297mm;
+    margin:24px auto;
+    background:#fff;
+    padding:24mm 22mm 30mm;
+    box-shadow:0 4px 24px rgba(0,0,0,.18);
+  }
+  .sheet::before{ content:""; position:absolute; top:0; left:0; bottom:0; width:6px; background:var(--red); }
+
+  header{ display:flex; justify-content:space-between; align-items:center; padding-bottom:16px; border-bottom:2px solid var(--red); }
+  .brand img{ display:block; width:70px; height:auto; }
+  .eyebrow{ font-size:10.5px; font-weight:bold; letter-spacing:1.6px; text-transform:uppercase; color:var(--red); }
+
+  .body{ padding-top:24px; }
+  .headline{ font-size:24px; line-height:30px; font-weight:bold; color:#000; margin:0 0 8px; }
+  .subhead{ font-size:14px; line-height:20px; color:var(--soft); margin:0 0 20px; }
+  .dateline{ font-size:12.5px; line-height:21px; color:var(--ink); margin:0 0 14px; }
+  .dateline strong{ color:#000; }
+
+  .copy p{ font-size:12.5px; line-height:21px; color:var(--ink); margin:0 0 13px; }
+  .placeholder{ color:var(--muted); }
+
+  .ends{ text-align:center; font-size:12px; letter-spacing:1px; color:var(--muted); margin:22px 0; }
+
+  .block{ margin-top:26px; padding-top:16px; border-top:1px solid rgba(0,0,0,.12); }
+  .block h3{ font-size:11px; text-transform:uppercase; letter-spacing:1.2px; color:var(--red); margin:0 0 8px; }
+  .block p{ font-size:11.5px; line-height:19px; color:var(--soft); margin:0 0 10px; }
+  .block a{ color:var(--soft); text-decoration:none; }
+  .block .web{ color:var(--red); font-weight:bold; }
+
+  footer{
+    position:absolute; left:22mm; right:22mm; bottom:16mm;
+    border-top:1px solid rgba(0,0,0,.12); padding-top:9px;
+    font-size:9.5px; line-height:15px; color:var(--muted);
+    display:flex; justify-content:space-between; align-items:flex-end;
+  }
+  footer .legal{ max-width:62%; }
+  footer .mark{ font-weight:bold; color:var(--red); letter-spacing:1px; font-size:11px; text-transform:uppercase; }
+
+  @media print{
+    html,body{ background:#fff; }
+    .sheet{ margin:0; box-shadow:none; width:auto; min-height:auto; }
+  }
+</style>
+</head>
+<body>
+  <div class="sheet">
+
+    <header>
+      <div class="brand">
+        <img src="https://www.roztomilygroup.com/roztomily/logo.png" alt="Roztomily">
+      </div>
+      <div class="eyebrow">For Immediate Release</div>
+    </header>
+
+    <div class="body">
+
+      <h1 class="headline">[HEADLINE]</h1>
+      <p class="subhead">[Subhead: one plain line that explains why this matters.]</p>
+
+      <p class="dateline"><strong>Lagos, Nigeria &middot; [Date]</strong></p>
+
+      <!-- ===== Replace the placeholder body below with the real announcement ===== -->
+      <div class="copy">
+        <p class="placeholder">[Opening paragraph. State the news in the first sentence: who is announcing what, and when it takes effect. Keep it to the facts you can confirm. Do not add figures or quotes you have not verified.]</p>
+        <p class="placeholder">[Second paragraph. Add the context a reader needs: what changes, who it affects, and what happens next. If you include a quote, attribute it to a named, approved spokesperson and use their exact words.]</p>
+        <p class="placeholder">[Third paragraph (optional). Close with practical detail such as availability, dates, or where to learn more. End on a clear, plain note.]</p>
+      </div>
+      <!-- ===== End replaceable body ===== -->
+
+      <div class="ends">ENDS</div>
+
+      <div class="block">
+        <h3>About Roztomily</h3>
+        <p>Roztomily Limited is a public relations and integrated marketing communications agency based in Lagos, Nigeria. We help organisations plan, write, and place their communications, and we manage media relations on their behalf. We work in plain language and keep the message simple.</p>
+      </div>
+
+      <div class="block">
+        <h3>Media Contact</h3>
+        <p>
+          [Name], [Title]<br>
+          <a href="tel:+2349139184995">+234 913 918 4995</a><br>
+          <a href="mailto:hello@roztomilygroup.com">hello@roztomilygroup.com</a><br>
+          <span class="web">www.roztomilygroup.com</span>
+        </p>
+      </div>
+
+    </div>
+
+    <footer>
+      <div class="legal">
+        Roztomily Limited &middot; Public Relations &amp; Integrated Marketing Communications &middot; Lagos, Nigeria
+      </div>
+      <div class="mark">Roztomily</div>
+    </footer>
+
+  </div>
+</body>
+</html>
