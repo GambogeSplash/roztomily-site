@@ -72,14 +72,13 @@ cf() { # cf METHOD PATH [json-body]
   [[ -n "$body" ]] && args+=(--data "$body")
   curl "${args[@]}"
 }
-cf_ok() { # assert .success==true, else print errors and die
-  jq -e '.success' >/dev/null 2>&1 || true
+cf_ok() { # assert .success==true, else print errors and die. Reads stdin ONCE.
   local out; out="$(cat)"
-  if [[ "$(jq -r '.success' <<<"$out")" != "true" ]]; then
-    say "$out" | jq -r '.errors[]? | "  CF error \(.code): \(.message)"' >&2
+  if [[ "$(jq -r '.success // false' <<<"$out")" != "true" ]]; then
+    jq -r '.errors[]? | "  CF error \(.code): \(.message)"' <<<"$out" >&2
     die "Cloudflare API call failed."
   fi
-  say "$out"
+  printf '%s' "$out"
 }
 
 # ── lazy API bootstrap (token + zone id + record cache) ─────────────────────
@@ -96,7 +95,7 @@ bootstrap_api() {
 # Guard: a record name is "safe to touch" only if it is exactly one of our targets.
 # Anything containing send. or a non-zoho _domainkey is explicitly protected.
 is_protected() { # name -> 0 if protected (must NOT touch)
-  local n="${1,,}"
+  local n; n="$(printf '%s' "$1" | tr '[:upper:]' '[:lower:]')"
   [[ "$n" == *"send."* ]] && return 0
   [[ "$n" == *"_domainkey"* && "$n" != "zoho._domainkey.${ZONE}" && "$n" != "zoho._domainkey" ]] && return 0
   case "$n" in
