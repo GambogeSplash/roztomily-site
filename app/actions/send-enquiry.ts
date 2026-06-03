@@ -111,19 +111,20 @@ export async function sendEnquiry(formData: FormData): Promise<EnquiryResult> {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>We got your enquiry</title>
 </head>
-<body style="margin: 0; padding: 0; background: #f5f3ee; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">
-  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background: #f5f3ee;">
+<body style="margin: 0; padding: 0; background: #edece7; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">
+  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background: #edece7;">
     <tr>
       <td align="center" style="padding: 40px 20px;">
         <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="560" style="background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 16px rgba(0,0,0,0.06); max-width: 560px;">
 
-          <!-- Brand-red header bar -->
+          <!-- Red spine + white header carrying the real logo mark -->
           <tr>
-            <td style="background: #dc2c25; padding: 32px 40px; color: #ffffff;">
-              <div style="font-family: 'Big Shoulders', 'Big Shoulders Display', Impact, sans-serif; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; font-size: 24px; line-height: 1;">
-                ROZTOMILY
-              </div>
-              <div style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.78); margin-top: 8px;">
+            <td style="height: 6px; background: #dc2c25; line-height: 6px; font-size: 0;">&nbsp;</td>
+          </tr>
+          <tr>
+            <td style="background: #ffffff; padding: 30px 40px 22px 40px; border-bottom: 1px solid #ecebe5;">
+              <img src="https://www.roztomilygroup.com/roztomily/logo.png" alt="Roztomily" width="150" style="display: block; border: 0; outline: none; width: 150px; height: auto;">
+              <div style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #898683; margin-top: 14px;">
                 Integrated Marketing Communications · Lagos
               </div>
             </td>
@@ -133,7 +134,7 @@ export async function sendEnquiry(formData: FormData): Promise<EnquiryResult> {
           <tr>
             <td style="padding: 36px 40px 8px 40px; color: #1a1816;">
               <h1 style="font-size: 26px; line-height: 1.15; letter-spacing: -0.02em; font-weight: 500; margin: 0 0 20px 0; color: #0d0a08;">
-                Thanks, ${escapeHtml(firstName)} — we&rsquo;ve got your enquiry.
+                Thanks, ${escapeHtml(firstName)}. We&rsquo;ve got your enquiry.
               </h1>
               <p style="font-size: 15px; line-height: 1.6; margin: 0 0 16px 0; color: #292421;">
                 Someone from the team will reply within <strong>one business day</strong>${
@@ -162,7 +163,7 @@ export async function sendEnquiry(formData: FormData): Promise<EnquiryResult> {
           <!-- Sign-off -->
           <tr>
             <td style="padding: 28px 40px 36px 40px;">
-              <p style="font-size: 15px; line-height: 1.6; margin: 0; color: #1a1816;">— The Roztomily team</p>
+              <p style="font-size: 15px; line-height: 1.6; margin: 0; color: #1a1816;">The Roztomily team</p>
               <p style="font-size: 13px; color: #898683; margin: 4px 0 0 0;">Lagos · Briefs welcome from anywhere</p>
             </td>
           </tr>
@@ -171,7 +172,7 @@ export async function sendEnquiry(formData: FormData): Promise<EnquiryResult> {
           <tr>
             <td style="background: #f7f6f2; padding: 18px 40px; border-top: 1px solid #ecebe5;">
               <p style="font-size: 11px; color: #898683; margin: 0; line-height: 1.5;">
-                This is an automated acknowledgement &mdash; a real human will reply soon.
+                This is an automated acknowledgement. A real human will reply soon.
                 You received this because you submitted an enquiry at
                 <a href="https://www.roztomilygroup.com" style="color: #898683;">roztomilygroup.com</a>.
               </p>
@@ -195,7 +196,7 @@ export async function sendEnquiry(formData: FormData): Promise<EnquiryResult> {
       "",
       `For anything urgent in the meantime, reply directly to this email or write to ${TO}.`,
       "",
-      "— The Roztomily team",
+      "The Roztomily team",
       "Lagos · Briefs welcome from anywhere",
       "",
       "(This is an automated acknowledgement. A real human will reply soon.)",
@@ -205,7 +206,7 @@ export async function sendEnquiry(formData: FormData): Promise<EnquiryResult> {
       from: FROM,
       to: email,
       replyTo: TO,
-      subject: `Thanks ${firstName} — we got your enquiry`,
+      subject: `Thanks ${firstName}, we got your enquiry`,
       html: autoHtml,
       text: autoText,
     });
@@ -261,7 +262,7 @@ export async function sendSource(formData: FormData): Promise<EnquiryResult> {
       from: FROM,
       to: TO,
       replyTo: email || undefined,
-      subject: `Source: ${source}${name !== "(unnamed)" ? ` — ${name}` : ""}`,
+      subject: `Source: ${source}${name !== "(unnamed)" ? ` (${name})` : ""}`,
       html,
       text,
     });

@@ -11,7 +11,7 @@ import { getBlur } from "@/lib/blur";
 const ITEMS = [
   { image: "/roztomily/projects/valuejet-brand-launch/01.jpg",        tag: "PR & Brand Marketing",  title: "ValueJet · Airline Launch Campaign",     href: "/projects/valuejet-brand-launch" },
   { image: "/roztomily/projects/kerrygold-world-milk-day/01.jpg",     tag: "Experiential",          title: "Kerrygold · World Milk Day",              href: "/projects/kerrygold-world-milk-day" },
-  { image: "/roztomily/projects/premier-cool-ready-up-your-cool/01.png", tag: "Creative Production", title: "Premier Cool · “Ready Up Your Cool” TVC", href: "/projects/premier-cool-ready-up-your-cool" },
+  { image: "/roztomily/projects/good-mama-9ja-queen-fashion-show/01.jpg", tag: "Experiential", title: "Good Mama · 9ja Queen Open Market Fashion Show", href: "/projects/good-mama-9ja-queen-fashion-show" },
 ];
 
 export function NewsRow() {

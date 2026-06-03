@@ -26,7 +26,6 @@ const PRESS_NEWS = [
   { image: "/roztomily/projects/valuejet-brand-launch/01.jpg",          tag: "Campaign",          title: "ValueJet · Airline Launch Campaign",              href: "/projects/valuejet-brand-launch" },
   { image: "/roztomily/projects/kerrygold-world-milk-day/01.jpg",       tag: "Experiential",      title: "Kerrygold · World Milk Day",                      href: "/projects/kerrygold-world-milk-day" },
   { image: "/roztomily/projects/bord-bia-meet-the-maker/01.jpg",        tag: "Experiential",      title: "Bord Bia · Meet the Maker",                        href: "/projects/bord-bia-meet-the-maker" },
-  { image: "/roztomily/projects/premier-cool-ready-up-your-cool/01.png",tag: "Creative Production", title: "Premier Cool · “Ready Up Your Cool” TVC",       href: "/projects/premier-cool-ready-up-your-cool" },
   { image: "/roztomily/projects/regal-turn-up-and-shine/01.jpg",        tag: "PR & Brand",        title: "Regal Gin · Turn Up & Shine",                      href: "/projects/regal-turn-up-and-shine" },
   { image: "/roztomily/projects/jamila-lawal/01.jpg",                   tag: "Talent",            title: "Jamila Lawal · Talent Management",                 href: "/projects/jamila-lawal" },
 ];
