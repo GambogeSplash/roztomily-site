@@ -47,9 +47,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${SITE_NAME} · ${TAGLINE}`,
     description: DESCRIPTION,
-    /* Same — falls back to opengraph-image.tsx if no twitter-image.tsx exists. */
-    creator: "@roztomily",
-    site: "@roztomily",
+    /* Same — falls back to opengraph-image.tsx if no twitter-image.tsx exists.
+       creator/site handles omitted until the new Roztomily X account is live. */
   },
   robots: {
     index: true,
@@ -103,9 +102,7 @@ const organizationLd = {
     addressCountry: "NG",
   },
   sameAs: [
-    "https://instagram.com/roztomily",
-    "https://linkedin.com/company/roztomily",
-    "https://x.com/roztomily",
+    "https://instagram.com/roztomilygroup",
   ],
   knowsAbout: [
     "PR & Brand Marketing",

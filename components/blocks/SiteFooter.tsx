@@ -5,12 +5,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Container } from "@/components/ui/Container";
 
-type Social = { label: string; href: string; icon: "instagram" | "linkedin" | "x" | "email" };
+type Social = { label: string; href: string; icon: "instagram" | "linkedin" | "x" | "email"; muted?: boolean };
 
 const SOCIALS: Social[] = [
-  { label: "Instagram", href: "https://instagram.com/roztomily",       icon: "instagram" },
-  { label: "LinkedIn",  href: "https://linkedin.com/company/roztomily", icon: "linkedin"  },
-  { label: "X",         href: "https://x.com/roztomily",               icon: "x"         },
+  { label: "Instagram", href: "https://instagram.com/roztomilygroup",  icon: "instagram" },
+  { label: "X",         href: "https://x.com/roztomily",               icon: "x", muted: true },
   { label: "Email",     href: "mailto:info@roztomilygroup.com",        icon: "email"     },
 ];
 
@@ -221,19 +220,32 @@ export function SiteFooter() {
               Follow
             </h4>
             <ul style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-              {SOCIALS.map((s) => (
-                <li key={s.label}>
-                  <Link
-                    href={s.href}
-                    aria-label={s.label}
-                    target={s.icon === "email" ? undefined : "_blank"}
-                    rel={s.icon === "email" ? undefined : "noopener noreferrer"}
-                    className="social-icon"
-                  >
-                    <Icon kind={s.icon} />
-                  </Link>
-                </li>
-              ))}
+              {SOCIALS.map((s) =>
+                s.muted ? (
+                  <li key={s.label}>
+                    <span
+                      aria-label={`${s.label} (coming soon)`}
+                      aria-disabled="true"
+                      className="social-icon"
+                      style={{ opacity: 0.3, pointerEvents: "none", cursor: "default" }}
+                    >
+                      <Icon kind={s.icon} />
+                    </span>
+                  </li>
+                ) : (
+                  <li key={s.label}>
+                    <Link
+                      href={s.href}
+                      aria-label={s.label}
+                      target={s.icon === "email" ? undefined : "_blank"}
+                      rel={s.icon === "email" ? undefined : "noopener noreferrer"}
+                      className="social-icon"
+                    >
+                      <Icon kind={s.icon} />
+                    </Link>
+                  </li>
+                )
+              )}
             </ul>
           </div>
         </div>
